@@ -14,6 +14,10 @@ from typing import Optional
 
 from oops_its_a_pipeline import PipelineConfig
 
+# TODO: move credentials to environment variables before deploying
+AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
+AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
 
 class NHSPracticeAnalysisConfig(PipelineConfig):
     """Simple configuration for NHS Practice Level Crosstabs pipeline."""

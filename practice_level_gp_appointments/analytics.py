@@ -31,10 +31,10 @@ Examples
 >>> results = stage.run(context)
 """
 
+import os, sys
 import pandas as pd
 from loguru import logger
 from oops_its_a_pipeline import PipelineStage
-
 from practice_level_gp_appointments.config import NHSPracticeAnalysisConfig
 
 
@@ -184,7 +184,7 @@ class SummarisationStage(PipelineStage):
         desc_stats = df[numeric_cols].describe()
         summaries["descriptive_stats"] = desc_stats
 
-        total_appointments = df["count_of_appointments"].sum()
+        total_appointments = len(df)
 
         if "appt_status" in df.columns:
             dna_appointments = df[df["appt_status"] == "DNA"][
