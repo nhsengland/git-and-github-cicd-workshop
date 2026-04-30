@@ -20,11 +20,10 @@
       }
     }
   },
-  "postCreateCommand": "uv sync --all-groups",
+  "postCreateCommand": "pip install uv && uv sync --all-groups",
   "forwardPorts": [8000],
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/astral-sh/uv:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "remoteUser": "vscode"
 }
