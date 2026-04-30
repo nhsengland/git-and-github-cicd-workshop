@@ -24,7 +24,7 @@
   "forwardPorts": [8000],
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/astral-sh/uv:0.4.4": {}
+    "ghcr.io/astral-sh/uv:1": {}
   },
   "remoteUser": "vscode"
 }
