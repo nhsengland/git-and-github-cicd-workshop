@@ -1,9 +1,28 @@
-# Open up the repository
+# Let's Get Set Up
 
-First things first, you will need to open up this website on your own machine.
+<div class="grid cards" markdown>
 
-Follow this link: [nhsengland.github.io/package-your-code-workshop/](https://nhsengland.github.io/package-your-code-workshop/) 
+- :material-numeric-1-circle: **Open this website**
 
-![Package Your Code Workshop QR Code](../images/package_your_code_workshop.png)
+    [nhsengland.github.io/git-and-github-cicd-workshop/](https://nhsengland.github.io/git-and-github-cicd-workshop/)
 
-Then follow the [Getting Started](../getting_started.md) instructions to fork the repository and open it up in Codespaces.
+- :material-numeric-2-circle: **Follow Getting Started**
+
+    [Getting Started](../getting_started.md) — fork the repo and open it in Codespaces.
+
+- :material-numeric-3-circle: **Start the live docs site**
+
+    Run the command below and open the forwarded port in your browser.
+
+- :material-numeric-4-circle: **Edit and watch it update**
+
+    Save any Markdown file — the site refreshes automatically.
+
+</div>
+
+```bash
+uv run mkdocs serve --livereload
+```
+
+!!! tip
+    Keep this site and your Codespace open side by side throughout the workshop.

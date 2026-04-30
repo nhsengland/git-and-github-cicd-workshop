@@ -1,11 +1,31 @@
-# Workshop Context - Why is any of this important?
+# Why does any of this matter?
 
-## I want to make Gold RAP easy and the default
+## :material-robot: Automation is what makes quality sustainable
 
-It can be a lot easier to build Gold RAP pipelines if you are doing it from the start and/or it is baked into your workflow and the project plan.
+<div class="grid cards" markdown>
 
-I want to make sure you know how you can do this stuff easily and effectively.
+- :material-account: **Writing good code once is easy**
 
-I want us to build tools and templates to make it easy for you to do this stuff, so it becomes the default; you can be lazy and still do Gold RAP, allowing you focus on doing great Data Science. However, we need to do the learning and the work to develop these skills and find the lazy desired paths first.
+    Maintaining that standard across a whole team, over months and years, is hard.
 
-I hope this workshop helps you start to do that and you can help figure out solutions to to how we make Gold RAP the easy, lazy default.
+- :material-close-circle: **Manual review has limits**
+
+    It's inconsistent, time-consuming, and dependent on the reviewer having a good day.
+
+- :material-check-circle: **Automation doesn't have bad days**
+
+    If the tooling fixes formatting, flags secrets, and runs tests on every change — quality becomes the default.
+
+</div>
+
+!!! success "The idea in one sentence"
+    **Make the right thing the easy thing.**
+
+---
+
+## :material-chart-line: This matters for RAP
+
+Automated quality checks are a direct enabler of [Silver RAP](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#silver-rap-implementing-best-practice) and [Gold RAP](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#gold-rap-analysis-as-a-product).
+
+- A pipeline that passes CI on every merge is a pipeline you can trust
+- Build the habit early — consistent quality should be the lazy default, not an extra effort

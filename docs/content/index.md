@@ -1,48 +1,33 @@
-# Package Your Code Workshop
+# Git and GitHub CI/CD Workshop
 
-Welcome to the **Package Your Code** workshop! This workshop is designed to teach NHS data scientists and analysts how to package their code effectively for better collaboration, distribution, and reuse. In this workshop, you'll master the essential skills for creating professional, reusable Python packages. You'll learn how to manage dependencies, package your code using modern standards, and create comprehensive documentation.
+Welcome to the **Git and GitHub CI/CD** workshop, run by the NHS England Data Science and Applied AI team.
+
+> This workshop is a dive into the automated features of Git and GitHub, specifically focusing on CI/CD workflows for Data Science projects. We will cover the mechanics and practical implementation of pre-commit hooks and GitHub Actions — two tools that automate quality checks, protect your repository from common mistakes, and keep your project standards consistent across a whole team.
 
 !!! tip "Pre-requisite Knowledge"
 
-    The workshop assumes that participants have a basic understanding of the following concepts:
-
     | Pre-requisite | Description |
     |---------------|-------------|
-    | Python        | Knowledge of how to write and run Python code |
-    | Git           | Basic command line usage and version control concepts |
-    | GitHub        | Familiarity with repositories, Codespaces, and forking |
-    | RAP           | Understanding of the core principles of Reproducible Analytical Pipelines (RAP), particularly the [levels of RAP](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP) |
-    | Virtual Environments & Package Management | Basic understanding of virtual environments and package management in Python (e.g., `pip` and `venv`) |
+    | Python | Knowledge of how to write and run Python code |
+    | Git | Basic command line usage — staging, committing, pushing |
+    | GitHub | Familiarity with repositories, Codespaces, and forking |
 
-## Core Workshop Topics
+## Workshop Activities
 
-* **[Dependency Management](workshops/dependency_management.md)**
-    * Using `uv` for fast, reliable dependency management
-    * Organizing dependencies into production, development, and documentation categories
-    * Creating and managing virtual environments
+There are two activities. Pick one to complete during the live session and work through the other at your own pace.
 
-* **[Packaging with pyproject.toml](workshops/packaging_pyproject.md)**
-    * Understanding the modern Python packaging standard
-    * Configuring project metadata and dependencies
-    * Making your code installable and reusable
+<div class="grid cards" markdown>
 
-* **[Documentation with MkDocs](workshops/mkdocs_documentation.md)**
-    * Setting up professional documentation with MkDocs Material
-    * Using mkdocstrings for automatic API documentation
-    * Creating user-friendly guides and tutorials
+- **[Pre-Commit Hooks](workshops/pre-commit-hooks.md)**
 
-## Bonus Content
+    Set up local automation that runs before every commit. You will configure hooks for secret detection ([`gitleaks`](https://github.com/gitleaks/gitleaks)), code linting and formatting ([`ruff`](https://docs.astral.sh/ruff/)), and notebook output stripping ([`nbstripout`](https://github.com/kynan/nbstripout)).
 
-!!! warning "Work in Progress"
+- **[GitHub Actions](workshops/github_actions.md)**
 
-    The bonus workshop are still a work in progress and have not been completed in time for the live delivery of the workshop.
+    Write [CI/CD workflows](https://docs.github.com/en/actions) that run automatically on GitHub. You will build a quality checks pipeline (`ruff` + `pytest`) and a documentation deployment workflow.
 
-Explore these additional topics at your own pace:
-
-* **[Cookiecutter Templates](workshops/cookiecutter_templates.md)** - Quickly scaffold new projects
-* **[Pre-Commit Hooks](workshops/precommit_hooks.md)** - Automate code quality checks
-* **[CI/CD with GitHub Actions](workshops/github_actions.md)** - Automate testing and deployment
+</div>
 
 ## Getting Started
 
-Ready to begin? Check out our [Getting Started](getting_started.md) guide to set up your development environment and begin the workshop.
+Start with [Getting Started](getting_started.md) to fork the repository and set up your environment.

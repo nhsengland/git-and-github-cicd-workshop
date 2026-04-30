@@ -1,3 +1,3 @@
-# Package Your Code Workshop "Presentation"
+# Git and GitHub CI/CD Workshop
 
-Welcome to the **Package Your Code** workshop! This series of workshops is designed to help you learn some of the best practices for packaging and distributing your Python code effectively. Whether you're a beginner or an experienced developer, these workshops will guide you through essential tools and techniques to enhance your coding projects.
+Welcome to the **Git and GitHub CI/CD** workshop! This workshop is a hands-on dive into the automated features of Git and GitHub, focusing on the practical CI/CD tools that Data Science teams use to keep code quality high and collaboration smooth.

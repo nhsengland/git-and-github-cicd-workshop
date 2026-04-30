@@ -1,69 +1,38 @@
-# Workshop Overview
+# Workshops
 
-Lets dive into these workshops! Each workshop will take
+There are two workshop activities. Pick one to work through during the live session — you can come back and do the other in your own time.
 
-!!! info "Learning Objectives"
+!!! question "Not sure which to pick?"
+    If you are more interested in local tooling and developer workflow, start with **[Pre-Commit Hooks](pre-commit-hooks.md)**.
 
-    By the end of these workshops, you'll be able to:
+    If you are more interested in cloud automation and GitHub integrations, start with **[GitHub Actions](github_actions.md)**.
 
-    - Manage Python dependencies professionally
-    - Package your code for easy distribution and reuse
-    - Create comprehensive documentation that your users will love
-    - Set up automated quality checks and deployment pipelines
-    - Apply RAP principles to your data science projects
+    Both activities use the same flawed repository as their starting point, so they work independently.
 
-## Workshop Path
+---
 
-### Core Workshops (Live Session)
+## [Pre-Commit Hooks](pre-commit-hooks.md)
 
-Complete these workshops in order during the live session:
+Configure automation that runs on your **local machine** before every `git commit`. You will set up three hooks:
 
-#### **[Dependency Management](dependency_management.md)**
+- **[gitleaks](https://github.com/gitleaks/gitleaks)** — scans for hardcoded secrets and credentials
+- **[ruff](https://docs.astral.sh/ruff/)** — checks and auto-fixes code formatting and linting violations
+- **[nbstripout](https://github.com/kynan/nbstripout)** — strips Jupyter notebook outputs before they are committed
 
-* Master modern Python package management with `uv`
-* Organize dependencies by purpose (production, development, docs)
-* Create reproducible environments
+The repository already has intentional problems baked in — you will watch the hooks catch them.
 
-#### **[Packaging with pyproject.toml](packaging_pyproject.md)**
+---
 
-* Configure project metadata and dependencies
-* Make your code installable and reusable
-* Follow modern Python packaging standards
+## [GitHub Actions](github_actions.md)
 
-#### **[Documentation with MkDocs](mkdocs_documentation.md)**
+Write CI/CD workflows that run automatically on **GitHub's servers** on every push and pull request. You will build:
 
-* Create professional documentation websites
-* Automatically generate API documentation
-* Deploy documentation to GitHub Pages
+- A **quality checks** workflow — runs `ruff` and `pytest`
+- A **documentation deployment** workflow — builds and publishes this MkDocs site to [GitHub Pages](https://pages.github.com/)
 
-### Bonus Workshops (Self-Paced)
-
-Explore these advanced topics at your own pace:
-
-#### **[Cookiecutter Templates](cookiecutter_templates.md)**
-
-* Create reusable project templates
-* Standardise team workflows
-* Rapid project scaffolding
-
-#### **[Pre-Commit Hooks](precommit_hooks.md)**
-
-* Automate code quality checks
-* Prevent common mistakes
-* Enforce coding standards
-
-#### **[CI/CD with GitHub Actions](github_actions.md)**
-
-* Automate testing and deployment
-* Build and publish packages
-* Continuous integration best practices
+---
 
 !!! question "Getting Help"
+    During the workshops, please ask questions — do not hesitate to flag if something is not working.
 
-    During the workshops:
-
-    * **Ask questions** - Don't hesitate to ask for clarification
-    * **Discussion time** - Share your experiences and learn from others
-    * **Stuck on something?** - The facilitators are here to help
-  
-    Outside of the workshops, don't hesitate to [open an issue](https://github.com/nhsengland/package-your-code-workshop/issues/new) in the repository if you encounter any problems or have suggestions for improvement.
+    Outside of the workshop, [open an issue](https://github.com/nhsengland/git-and-github-cicd-workshop/issues/new) if you find a problem with the materials.

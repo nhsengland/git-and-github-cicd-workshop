@@ -1,654 +1,446 @@
-# CI/CD with GitHub Actions: Automate Testing and Documentation Deployment
-
-!!! tip "Bonus Workshop - Self-Paced"
-    This is an optional, self-paced workshop. You can complete it at your own speed and refer back to it as needed.
-
-!!! info "CI/CD Definitions"
-    **Continuous Integration (CI)** automatically tests your code every time you make changes, catching problems early.
-
-    **Continuous Deployment (CD)** automatically deploys your applications when changes are merged, ensuring your users always have the latest version.
-
-    **GitHub Actions** is GitHub's built-in CI/CD platform that runs workflows when events happen in your repository (like pushes, pull requests, or releases).
-
-### Why Use GitHub Actions?
-
-**Catch Issues Early**: Test every change before it's merged into main
-**Automate Repetitive Tasks**: No more manual testing and deployment
-**Consistent Quality**: Same checks run for everyone, every time
-**Fast Feedback**: Know immediately if your changes break something
-**Always Up-to-Date Docs**: Documentation deploys automaticallytip "Bonus Workshop - Self-Paced"
-    This is an optional, self-paced workshop. You can complete it at your own speed and refer back to it as needed.
-
-Learn how to automate code quality checks, testing, and documentation deployment using GitHub Actions - making your development workflow more professional and reliable.
+# GitHub Actions
 
 !!! success "Learning Objectives"
 
-    - Understand GitHub Actions fundamentals and workflow structure
-    - Create automated code quality checks with Ruff and pytest
-    - Set up conditional documentation building and testing
-    - Automate documentation deployment to GitHub Pages
-    - Follow CI/CD best practices for Python projects
+    By the end of this activity, you will be able to:
 
-??? info "Why This Matters for RAP"
-    Automated testing and deployment directly supports [Silver RAP](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#silver-rap-implementing-best-practice) by ensuring code quality and [Gold RAP](https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#gold-rap-analysis-as-a-product) by automating the publication process. GitHub Actions helps you maintain consistent code standards, catch issues early, and deploy documentation automatically - essential for professional analytical pipelines.
+    - [ ] Describe what GitHub Actions is and how workflows are structured
+    - [ ] Write a workflow that runs code quality checks on every push and pull request
+    - [ ] Write a workflow that deploys documentation to GitHub Pages
+    - [ ] Configure Python and install dependencies in CI
 
-??? info "What is CI/CD?"
+---
 
-    * **Continuous Integration (CI)** automatically tests your code every time you make changes, catching problems early.
-    * **Continuous Deployment (CD)** automatically deploys your applications when changes are merged, ensuring your users always have the latest version.
-    * **GitHub Actions** is GitHub's built-in CI/CD platform that runs workflows when events happen in your repository (like pushes, pull requests, or releases).
+## What is GitHub Actions?
 
-!!! info "Why Use GitHub Actions?"
+**[GitHub Actions](https://docs.github.com/en/actions)** is GitHub's built-in CI/CD platform. You define **workflows** as YAML files stored in `.github/workflows/`. GitHub automatically runs these workflows when specified events occur in your repository — such as a push, a pull request, or a scheduled time.
 
-    * **Catch Issues Early**: Test every change before it's merged into main
-    * **Automate Repetitive Tasks**: No more manual testing and deployment
-    * **Consistent Quality**: Same checks run for everyone, every time
-    * **Fast Feedback**: Know immediately if your changes break something
-    * **Always Up-to-Date Docs**: Documentation deploys automatically
+Each workflow runs inside a fresh virtual machine (**runner**) provisioned by GitHub. This means every run starts from a clean slate, making your checks reproducible and consistent.
 
-## Task 1: Understanding GitHub Actions Structure
+A workflow has this basic structure:
 
-Let's start by understanding how GitHub Actions workflows are organized and what we'll build.
+```yaml
+name: My Workflow            # (1)!
 
-### 1.1 Workflow Structure
+on:                          # (2)!
+  push:
+  pull_request:
 
-GitHub Actions workflows are defined in YAML files stored in `.github/workflows/` directory. Each workflow consists of:
-
-- **Triggers** (when to run): push, pull request, schedule, etc.
-- **Jobs** (what to do): groups of steps that run together
-- **Steps** (individual tasks): run commands, use actions, etc.
-
-### 1.2 Our CI/CD Strategy
-
-We'll create two workflows following the KISS principle:
-
-```
-┌─────────────────────┐    ┌──────────────────────┐
-│   Pull Request      │    │    Main Branch       │
-│   Quality Checks    │    │    Documentation     │
-│                     │    │    Deployment        │
-│ ✓ Code Quality      │    │                      │
-│ ✓ Tests             │    │ ✓ Build Docs         │
-│ ✓ Docs Build        │    │ ✓ Deploy to Pages    │
-└─────────────────────┘    └──────────────────────┘
+jobs:                        # (3)!
+  my-job:
+    runs-on: ubuntu-latest   # (4)!
+    steps:                   # (5)!
+      - uses: actions/checkout@v4
+      - run: echo "Hello, CI!"
 ```
 
-**Workflow 1: Quality Checks** (runs on pull requests)
-- Code quality with Ruff
-- Run pytest test suite  
-- Test documentation builds (if docs changed)
+1. A human-readable name shown in the **Actions** tab on GitHub.
+2. **Triggers** — the events that cause the workflow to run. `push` fires on every push to any branch; `pull_request` fires when a PR is opened or updated.
+3. **Jobs** — groups of steps. Multiple jobs run in parallel by default; add `needs:` to sequence them.
+4. The **runner** image. `ubuntu-latest` is the most common choice for Python projects.
+5. **Steps** — the individual tasks within a job. `uses:` runs a pre-built Action from the GitHub Marketplace; `run:` executes a shell command.
 
-**Workflow 2: Deploy Documentation** (runs on main branch)
-- Build and deploy documentation to GitHub Pages
+---
 
-## Task 2: Setting Up Quality Checks Workflow
+## Why Automate with GitHub Actions in Data Science?
 
-Let's create our first workflow to automatically check code quality when pull requests are opened.
+Pre-commit hooks and GitHub Actions solve related but different problems:
 
-### 2.1 Create the Workflows Directory
+| | Pre-Commit Hooks | GitHub Actions |
+|---|---|---|
+| **Where it runs** | Your local machine | GitHub's servers |
+| **When it runs** | Before every local commit | On every push / pull request |
+| **Who controls it** | Each developer installs it | Enforced for the whole repository |
+| **Can auto-fix files** | Yes | No — reports failures only |
+| **Can block merges** | No | Yes — via branch protection rules |
 
-First, create the directory structure for GitHub Actions:
+Use both together: hooks give fast local feedback, and Actions enforce the same checks for every developer on every push.
+
+!!! info "R Equivalents"
+
+    GitHub Actions is language-agnostic. For R projects:
+
+    === "Python"
+        Use `actions/setup-python` to install Python, then `pip install` to install dependencies.
+
+        ```yaml
+        - name: Set up Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: "3.12"
+
+        - name: Install dependencies
+          run: pip install -e ".[dev]"
+        ```
+
+    === "R"
+        Use [`r-lib/actions`](https://github.com/r-lib/actions) for a standardised R setup. The `pak` package manager handles fast dependency installation.
+
+        ```yaml
+        - uses: r-lib/actions/setup-r@v2
+          with:
+            r-version: '4.4'
+
+        - uses: r-lib/actions/install-r-dependencies@v2
+          with:
+            cache-version: 1
+
+        - name: Run tests
+          run: Rscript -e 'testthat::test_dir("tests/testthat")'
+
+        - name: Lint
+          run: Rscript -e 'lintr::lint_dir("R")'
+        ```
+
+---
+
+## Activity: Build Two CI/CD Workflows
+
+### Task 1: Create the Workflows Directory
+
+GitHub Actions looks for workflow files in `.github/workflows/`. Create the directory:
 
 ```bash
-# Create the workflows directory
 mkdir -p .github/workflows
-
-# Verify the structure
-ls -la .github/
 ```
 
-### 2.2 Create the Quality Checks Workflow
+---
 
-Create a new file `.github/workflows/quality-checks.yml` and choose the version that matches your project setup:
+### Task 2: Give the Workflow a Name and Triggers
 
-=== "With pyproject.toml"
+Create a new file `.github/workflows/quality-checks.yml`. Start with just the name and the events that should trigger it:
 
-    Use this version if you've completed the dependency management workshop:
+```yaml
+name: Quality Checks
 
-    ```yaml
-    name: Quality Checks # (1)!
+on:
+  push:
+  pull_request:
+```
 
-    on: # (2)!
-      pull_request:
-        branches: [ main ]
-      push:
-        branches: [ main ]
+!!! info "What are triggers?"
+    The `on:` block controls *when* the workflow runs.
 
-    jobs:
-      quality-checks: # (3)!
-        runs-on: ubuntu-latest # (4)!
-        
-        steps:
-        - name: Checkout code # (5)!
-          uses: actions/checkout@v4
-          
-        - name: Set up Python # (6)!
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (7)!
-          run: |
-            pip install ruff pytest
-            pip install -e .
-            
-        - name: Run Ruff linting # (8)!
-          run: ruff check practice_level_gp_appointments/
-            
-        - name: Run Ruff formatting check # (9)!
-          run: ruff format --check practice_level_gp_appointments/
-            
-        - name: Run pytest # (10)!
-          run: pytest tests/ -v
-            
-      docs-check: # (11)!
-        runs-on: ubuntu-latest
-        if: contains(github.event.pull_request.changed_files, 'docs/') || github.event_name == 'push' # (12)!
-        
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-          
-        - name: Set up Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (13)!
-          run: |
-            pip install mkdocs mkdocs-material
-            pip install -e .
-            
-        - name: Test documentation build # (14)!
-          run: mkdocs build --strict
+    - `push` fires on every push to any branch.
+    - `pull_request` fires when a pull request is opened or updated.
+
+    Together these mean: run quality checks whenever any code change arrives, whether directly pushed or proposed via PR. You can narrow them down with `branches:` filters once you are comfortable with the basics.
+
+---
+
+### Task 3: Add a Job and Choose a Runner
+
+Add the `jobs:` block below your triggers:
+
+```yaml
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+```
+
+!!! info "Jobs and runners"
+    A **job** is a group of steps that run together. Multiple jobs in the same workflow run in parallel by default — add `needs:` to sequence them.
+
+    `runs-on: ubuntu-latest` tells GitHub to spin up a fresh Ubuntu virtual machine for each run. The machine starts completely empty; every run must install its own dependencies from scratch. This is what makes CI reproducible.
+
+---
+
+### Task 4: Check Out the Code
+
+Add a `steps:` key under your job, with the checkout step as its first entry:
+
+```yaml
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+```
+
+!!! info "`uses:` vs `run:`"
+    Steps can do one of two things:
+
+    - `uses:` runs a **pre-built Action** from the GitHub Marketplace. `actions/checkout@v4` is maintained by GitHub and handles the full `git clone` for you.
+    - `run:` executes a **shell command** directly on the runner, just like typing it in a terminal.
+
+    The `@v4` suffix pins the Action to a specific major version, preventing unexpected changes from breaking your workflow.
+
+---
+
+### Task 5: Install Python and Dependencies
+
+Append two more steps directly below the checkout step:
+
+```yaml
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+```
+
+!!! info "Why install dependencies every run?"
+    The runner is a fresh VM — it has no packages installed. `pip install -e ".[dev]"` installs the project in editable mode along with everything in the `dev` dependency group, which includes `pytest` and `ruff`.
+
+    The `with:` block passes inputs to an Action. Here it tells `setup-python` exactly which Python version to install, keeping every run consistent.
+
+---
+
+### Task 6: Add the Quality Check Steps
+
+Append the final two steps:
+
+```yaml
+      - name: Lint and format check
+        run: ruff check .
+
+      - name: Run tests
+        run: pytest tests/
+```
+
+`ruff check .` exits with a non-zero code if there are any linting violations, which fails the step and the whole job. `pytest tests/` does the same if any test fails.
+
+!!! warning "This workflow will fail on the first push — deliberately"
+    The repository contains a logic bug in `practice_level_gp_appointments/analytics.py` that causes two test failures. Pre-commit hooks catch secrets and formatting violations locally, but they cannot run your test suite — that is what GitHub Actions is for.
+
+    You will see the `pytest` step fail in the **Actions** tab. The **Bonus Activity** at the end of this workshop walks through tracking down and fixing the bug.
+
+---
+
+### Task 7: Push and Watch it Run
+
+Stage and push the new workflow file:
+
+```bash
+git add .github/workflows/quality-checks.yml
+git commit -m "add quality checks workflow"
+git push
+```
+
+Navigate to your forked repository on GitHub and click the **Actions** tab. You should see the workflow running (or already completed). Click into it to see the logs from each step.
+
+!!! tip "Protecting your main branch"
+    Once your workflow is passing, go to **Settings → Branches → Add branch protection rule** on your fork. Enable **Require status checks to pass before merging** and select `Quality Checks`. This prevents any pull request from being merged until CI passes — the same pattern used on production repositories.
+
+---
+
+### Task 8: Name and Trigger the Deploy Workflow
+
+Create a second file `.github/workflows/deploy-docs.yml`. This workflow has a different purpose — it deploys documentation — so it needs different triggers:
+
+```yaml
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+```
+
+!!! info "Narrowing triggers with `branches:`"
+    Unlike the quality checks workflow that fires on every push, documentation should only deploy when code reaches `main`. Deploying from feature branches would overwrite the live site with unreviewed work.
+
+    The `branches:` filter restricts the `push` trigger to only that branch.
+
+---
+
+### Task 9: Add Permissions and the Deploy Job
+
+This workflow needs write access to push the built site to the `gh-pages` branch. Add the `permissions:` block and the job below your triggers:
+
+```yaml
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+```
+
+!!! info "Why declare permissions?"
+    By default, GitHub Actions workflows have read-only access to the repository. `contents: write` grants the job permission to push commits — which `mkdocs gh-deploy` needs in order to update the `gh-pages` branch.
+
+    Declaring only the permissions you need is good security practice: it limits the blast radius if a third-party Action in the job were ever compromised.
+
+---
+
+### Task 10: Add the Steps
+
+Complete the workflow by adding `steps:` under the job:
+
+```yaml
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install docs dependencies
+        run: pip install -e ".[docs]"
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
+```
+
+Notice `pip install -e ".[docs]"` instead of `.[dev]` — there is no reason to install `pytest` or `ruff` for a documentation build. Keeping dependency groups separate makes CI faster and the intent clearer.
+
+`mkdocs gh-deploy --force` builds the static site and force-pushes it to the `gh-pages` branch. [GitHub Pages](https://pages.github.com/) serves this branch automatically.
+
+!!! info "Enabling GitHub Pages on your fork"
+    For the deployment to work, go to **Settings → Pages** in your forked repository. Set the source to **Deploy from a branch** and select `gh-pages`. After the workflow runs for the first time, your site will be live at:
+
+    ```
+    https://\<your-username\>.github.io/git-and-github-cicd-workshop/
     ```
 
-=== "With requirements.txt"
+---
 
-    Use this version if you haven't set up pyproject.toml yet:
+### Task 11: Push and Verify the Deployment
+
+```bash
+git add .github/workflows/deploy-docs.yml
+git commit -m "add docs deploy workflow"
+git push
+```
+
+Once the workflow completes, your documentation site will be live. Check the **Actions** tab to confirm the deployment step succeeded, then open your GitHub Pages URL to see the site.
+
+!!! success "Well done!"
+    You now have two automated workflows:
+
+    - **Quality Checks** — ruff and pytest run on every push and pull request, catching issues before they reach `main`
+    - **Deploy Documentation** — your MkDocs site is built and published automatically whenever code is merged
+
+    If you haven't already, try the **[Pre-Commit Hooks](pre-commit-hooks.md)** workshop to catch secrets and formatting violations before they ever reach CI.
+
+---
+
+## Complete Files Reference
+
+If anything looks wrong in your workflow files, compare against the complete versions here.
+
+??? note "`.github/workflows/quality-checks.yml` — complete file"
 
     ```yaml
-    name: Quality Checks # (1)!
+    name: Quality Checks
 
-    on: # (2)!
-      pull_request:
-        branches: [ main ]
+    on:
       push:
-        branches: [ main ]
+      pull_request:
 
     jobs:
-      quality-checks: # (3)!
-        runs-on: ubuntu-latest # (4)!
-        
-        steps:
-        - name: Checkout code # (5)!
-          uses: actions/checkout@v4
-          
-        - name: Set up Python # (6)!
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (7)!
-          run: |
-            pip install ruff pytest
-            pip install -r requirements.txt
-            
-        - name: Run Ruff linting # (8)!
-          run: ruff check practice_level_gp_appointments/
-            
-        - name: Run Ruff formatting check # (9)!
-          run: ruff format --check practice_level_gp_appointments/
-            
-        - name: Run pytest # (10)!
-          run: pytest tests/ -v
-            
-      docs-check: # (11)!
+      quality:
         runs-on: ubuntu-latest
-        if: contains(github.event.pull_request.changed_files, 'docs/') || github.event_name == 'push' # (12)!
-        
+
         steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-          
-        - name: Set up Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (13)!
-          run: |
-            pip install mkdocs mkdocs-material
-            pip install -r requirements.txt
-            
-        - name: Test documentation build # (14)!
-          run: mkdocs build --strict
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+              python-version: "3.12"
+
+          - name: Install dependencies
+            run: pip install -e ".[dev]"
+
+          - name: Lint and format check
+            run: ruff check .
+
+          - name: Run tests
+            run: pytest tests/
     ```
 
-1. **Workflow name** - appears in GitHub Actions UI
-2. **Triggers** - when this workflow runs (pull requests and pushes to main)
-3. **First job** - runs code quality checks
-4. **Runner environment** - uses latest Ubuntu (free for public repos)
-5. **Checkout step** - downloads your repository code
-6. **Python setup** - installs Python 3.12
-7. **Dependencies** - installs tools and your project dependencies
-8. **Linting** - checks code quality with Ruff
-9. **Formatting** - ensures consistent code formatting
-10. **Testing** - runs the test suite with pytest
-11. **Second job** - checks documentation building
-12. **Conditional execution** - only runs if docs files changed
-13. **Documentation dependencies** - installs MkDocs and your package
-14. **Documentation test** - ensures docs build without errors
-
-### 2.3 Understanding the Workflow
-
-Let's break down what this workflow does:
-
-!!! tip "Two Separate Jobs"
-    We split this into **two jobs** that run in parallel:
-    
-    - **`quality-checks`** - Always runs, checks code and tests
-    - **`docs-check`** - Only runs if documentation files changed
-    
-    This saves time and resources when you're only changing code (not docs).
-
-!!! info "Why `--strict` for MkDocs?"
-    The `--strict` flag makes MkDocs fail if there are any warnings. This catches issues like:
-    
-    - Broken internal links
-    - Missing pages in navigation  
-    - Invalid markdown syntax
-    - Plugin configuration errors
-
-## Task 3: Creating the Documentation Deployment Workflow
-
-Now let's create a workflow that automatically deploys documentation to GitHub Pages when changes are merged to main.
-
-### 3.1 Create the Deployment Workflow
-
-Create `.github/workflows/deploy-docs.yml`:
-
-=== "With pyproject.toml"
+??? note "`.github/workflows/deploy-docs.yml` — complete file"
 
     ```yaml
-    name: Deploy Documentation # (1)!
+    name: Deploy Documentation
 
-    on: # (2)!
+    on:
       push:
-        branches: [ main ]
-        paths: [ 'docs/**', 'mkdocs.yml', 'pyproject.toml' ]
+        branches:
+          - main
 
-    permissions: # (3)!
+    permissions:
       contents: write
 
     jobs:
-      deploy-docs:
+      deploy:
         runs-on: ubuntu-latest
-          
+
         steps:
-        - name: Checkout code # (4)!
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-          
-        - name: Set up Python # (5)!
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (6)!
-          run: |
-            pip install mkdocs mkdocs-material
-            pip install -e .
-            
-        - name: Deploy to GitHub Pages # (7)!
-          run: mkdocs gh-deploy --force
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+              python-version: "3.12"
+
+          - name: Install docs dependencies
+            run: pip install -e ".[docs]"
+
+          - name: Deploy to GitHub Pages
+            run: mkdocs gh-deploy --force
     ```
 
-=== "With requirements.txt"
+---
+
+## Bonus Activity: Fix the Failing Tests
+
+The `quality` job is failing because `analytics.py` contains a subtle logic bug. Open the failing test run in the **Actions** tab and read the assertion error to understand what is going wrong.
+
+The bug is in `practice_level_gp_appointments/analytics.py`. Look at how `total_appointments` is calculated — it is counting the number of *rows* in the DataFrame rather than the total number of *appointments*.
+
+??? success "Reveal the fix"
+
+    Find this line:
+
+    ```python
+    total_appointments = len(df)
+    ```
+
+    Replace it with:
+
+    ```python
+    total_appointments = df["count_of_appointments"].sum()
+    ```
+
+    Run `uv run pytest tests/unittests/test_analytics.py` locally to confirm both tests pass, then push. Watch the workflow go green.
+
+---
+
+## Going Further
+
+??? info "Workflow badges"
+    You can add a status badge to your `README.md` to show whether your CI is passing. On the Actions tab, click your workflow name, then click the three-dot menu and select **Create status badge**.
+
+    ```markdown
+    ![Quality Checks](https://github.com/<org>/<repo>/actions/workflows/quality-checks.yml/badge.svg)
+    ```
+
+??? info "Secrets in GitHub Actions"
+    Never hardcode credentials in your workflow files. Store them in **Settings → Secrets and variables → Actions** and reference them as environment variables:
 
     ```yaml
-    name: Deploy Documentation # (1)!
-
-    on: # (2)!
-      push:
-        branches: [ main ]
-        paths: [ 'docs/**', 'mkdocs.yml', 'requirements.txt' ]
-
-    permissions: # (3)!
-      contents: write
-
-    jobs:
-      deploy-docs:
-        runs-on: ubuntu-latest
-          
-        steps:
-        - name: Checkout code # (4)!
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-          
-        - name: Set up Python # (5)!
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.12'
-            
-        - name: Install dependencies # (6)!
-          run: |
-            pip install mkdocs mkdocs-material
-            pip install -r requirements.txt
-            
-        - name: Deploy to GitHub Pages # (7)!
-          run: mkdocs gh-deploy --force
+    - name: Deploy
+      env:
+        MY_API_KEY: ${{ secrets.MY_API_KEY }}
+      run: python deploy.py
     ```
 
-1. **Deployment workflow** - focuses only on publishing documentation
-2. **Specific triggers** - only runs when docs-related files change on main
-3. **Permissions** - only needs write access to push to gh-pages branch
-4. **Full git history** - fetch-depth: 0 gets complete history for gh-deploy
-5. **Python setup** - installs Python 3.12
-6. **Install dependencies** - gets MkDocs and your project dependencies
-7. **Deploy with MkDocs** - builds and deploys to GitHub Pages in one command
+??? info "Caching dependencies"
+    You can cache your `pip` dependencies to speed up subsequent workflow runs. Add the `cache` input to `actions/setup-python`:
 
-### 3.2 Configure GitHub Pages
-
-!!! info "Skip This Step If..."
-    If you've already completed the [**MkDocs Documentation workshop**](mkdocs_documentation.md), you can skip this step as GitHub Pages is already configured for your repository.
-
-If you haven't set up GitHub Pages yet, you need to configure it to serve from the gh-pages branch:
-
-1. **Go to your repository** on GitHub
-2. **Click Settings** tab
-3. **Scroll down to Pages** section
-4. **Under "Source"** select **"Deploy from a branch"**
-5. **Choose "gh-pages" branch** and **"/ (root)" folder**
-6. **Click Save**
-
-!!! warning "No gh-pages Branch Yet?"
-    Don't worry! The `mkdocs gh-deploy` command will create the gh-pages branch automatically on first deployment. GitHub Pages will show an error until we deploy for the first time.
-
-## Task 4: Testing Your Workflows
-
-Now let's test both workflows to make sure they work correctly.
-
-### 4.1 Test the Quality Checks Workflow
-
-First, let's test the quality checks by creating a pull request:
-
-```bash
-# Create a new branch
-git checkout -b test-github-actions
-
-# Add the workflow files
-git add .github/workflows/
-
-# Commit the changes
-git commit -m "feat: add GitHub Actions workflows for CI/CD
-
-- Add quality checks workflow for pull requests
-- Add documentation deployment workflow
-- Includes code linting, testing, and docs building"
-
-# Push the branch
-git push origin test-github-actions
-```
-
-Now create a pull request on GitHub:
-
-1. **Go to your repository** on GitHub
-2. **Click "Compare & pull request"** 
-3. **Add a title**: "Add GitHub Actions CI/CD workflows"
-4. **Add a description** explaining what you've added
-5. **Click "Create pull request"**
-
-!!! success "Watch It Work"
-    After creating the pull request, you should see the GitHub Actions workflows start running automatically. Click on the "Checks" tab to see the progress.
-
-### 4.2 Trigger a Documentation Deployment
-
-Once your pull request is merged, test the documentation deployment:
-
-```bash
-# Switch back to main and pull the changes
-git checkout main
-git pull origin main
-
-# Make a small change to documentation
-echo "This page was last updated: $(date)" >> docs/content/index.md
-
-# Commit and push
-git add docs/content/index.md
-git commit -m "docs: add last updated timestamp"
-git push origin main
-```
-
-This should trigger the documentation deployment workflow automatically.
-
-### 4.3 Verify Everything Works
-
-Check that both workflows are working:
-
-1. **Go to Actions tab** in your GitHub repository
-2. **Verify quality checks ran** on your pull request
-3. **Verify docs deployment ran** when you pushed to main
-4. **Check your GitHub Pages site** is updated
-
-Your documentation should be available at: `https://YOUR-USERNAME.github.io/package-your-code-workshop`
-
-## Task 5: Understanding and Debugging Workflow Results
-
-Let's learn how to interpret workflow results and debug issues when they occur.
-
-### 5.1 Reading Workflow Status
-
-After your workflows run, GitHub Actions provides clear visual indicators in the repository:
-
-1. **Navigate to the Actions tab** in your GitHub repository
-2. **Look at the workflow status icons** next to each workflow run
-3. **Click on any workflow** to see detailed results
-
-!!! success "Green checkmark - All checks passed"
-    Your workflow completed successfully. All tests passed, code quality checks passed, and any deployment steps succeeded.
-
-!!! failure "Red X - Something failed"
-    One or more steps in your workflow failed. Click on the workflow to see which step failed and why.
-
-!!! warning "Yellow dot - Workflow is running"
-    Your workflow is currently executing. You can click to watch the progress in real-time.
-
-!!! info "Gray circle - Workflow was skipped"
-    The workflow didn't run, usually because the trigger conditions weren't met (e.g., no documentation files changed).
-
-### 5.2 Debug a Failed Workflow
-
-When a workflow fails, follow these steps to identify and fix the problem:
-
-1. **Click on the failed workflow** in the Actions tab
-2. **Click on the failed job** (it will have a red X icon)
-3. **Expand the failed step** to see the detailed error output
-4. **Look for the actual error message** (often at the bottom of the log)
-
-!!! tip "Common Issues and Fixes"
-    
-    **Ruff linting fails:**
-    ```bash
-    # Fix locally first
-    ruff check practice_level_gp_appointments/ --fix
-    ruff format practice_level_gp_appointments/
-    git commit -am "fix: resolve linting issues"
-    ```
-    
-    **Tests fail:**
-    ```bash
-    # Run tests locally to debug
-    pytest tests/ -v
-    # Fix the failing tests, then commit
-    ```
-    
-    **Documentation build fails:**
-    ```bash
-    # Test docs build locally
-    mkdocs build --strict
-    # Fix any broken links or syntax errors
+    ```yaml
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: "pip"
     ```
 
-### 5.3 Add Workflow Status Badges
-
-Status badges show the current state of your workflows directly in your README:
-
-1. **Open your README.md file**
-2. **Add badge markdown** at the top of the file:
-
-```markdown
-# Package Your Code Workshop
-
-![Quality Checks](https://github.com/YOUR-USERNAME/package-your-code-workshop/workflows/Quality%20Checks/badge.svg)
-![Deploy Documentation](https://github.com/YOUR-USERNAME/package-your-code-workshop/workflows/Deploy%20Documentation/badge.svg)
-
-Your workshop description here...
-```
-
-!!! info "Why Use Badges?"
-    Status badges provide immediate visual feedback about your project's health. They show visitors whether your tests are passing and if your documentation is building successfully.
-
-
-
-## Best Practices for CI/CD
-
-### Workflow Organization
-
-!!! tip "Keep It Simple"
-    
-    **Do:**
-    - ✅ **One purpose per workflow** - separate quality checks from deployment
-    - ✅ **Descriptive names** - "Quality Checks", not "CI"
-    - ✅ **Conditional execution** - only run what's needed
-    - ✅ **Fast feedback** - fail fast on code quality issues
-    
-    **Don't:**
-    - ❌ **Monolithic workflows** - one massive workflow that does everything
-    - ❌ **Unnecessary runs** - testing docs when only code changed
-    - ❌ **Silent failures** - always check workflow results
-
-### Security Best Practices
-
-!!! warning "Security Considerations"
-    
-    **Permissions:**
-    - Only grant the minimum permissions needed
-    - Use `contents: read` by default
-    - Only add `pages: write` for deployment workflows
-    
-    **Secrets:**
-    - Never commit API keys or passwords
-    - Use GitHub repository secrets for sensitive data
-    - Prefer GitHub's built-in authentication when possible
-
-### Resource Management
-
-!!! info "GitHub Actions Limits"
-    
-    **Public repositories** get:
-    - ✅ **Unlimited minutes** for public repos
-    - ✅ **2,000 minutes/month** for private repos (free tier)
-    
-    **Best practices:**
-    - Cache dependencies to speed up builds
-    - Skip unnecessary jobs with conditions
-    - Use matrix builds carefully (they multiply resource usage)
-
-## Troubleshooting
-
-### Common Workflow Issues
-
-!!! warning "Workflow Not Triggering"
-    **Check:**
-    - File is in `.github/workflows/` directory
-    - YAML syntax is correct (use a YAML validator)
-    - Triggers match your intended events
-    - Branch names are correct
-
-!!! warning "Permission Denied"
-    **For GitHub Pages deployment:**
-    - Enable GitHub Pages in repository settings
-    - Set source to "GitHub Actions" 
-    - Check workflow permissions section
-
-!!! warning "Dependencies Install Fails"
-    **Common fixes:**
-    - Ensure pyproject.toml is valid
-    - Check all dependency groups exist
-    - Verify UV installation completed successfully
-
-### Debugging Workflow Files
-
-```bash
-# Validate YAML syntax locally
-python -c "import yaml; yaml.safe_load(open('.github/workflows/quality-checks.yml'))"
-
-# Check file encoding (should be UTF-8)
-file .github/workflows/quality-checks.yml
-```
-
-## Checkpoint
-
-Before finishing this workshop, verify you can:
-
-- [ ] Create GitHub Actions workflow files in the correct directory
-- [ ] Set up automated code quality checks with Ruff and pytest
-- [ ] Configure conditional documentation building
-- [ ] Deploy documentation automatically to GitHub Pages
-- [ ] Understand workflow status and debug failures
-- [ ] Apply CI/CD best practices to your projects
-
-## Next Steps
-
-Congratulations! You've set up professional CI/CD workflows for your Python project.
-
-**Your project now automatically:**
-
-- ✅ **Tests all code changes** before they're merged
-- ✅ **Maintains code quality** with automated linting
-- ✅ **Deploys documentation** when changes are made
-- ✅ **Provides immediate feedback** on pull requests
-
-**Continue improving your workflows:**
-
-- Add more comprehensive tests to your test suite
-- Set up notifications for workflow failures
-- Create workflows for releasing new versions
-- Add security scanning with tools like CodeQL
-
-**Explore other workshop topics:**
-
-- [**Dependency Management**](dependency_management.md) - Modern Python dependency management
-- [**Packaging with pyproject.toml**](packaging_pyproject.md) - Professional Python packaging  
-- [**Documentation with MkDocs**](mkdocs_documentation.md) - Create beautiful documentation
-- [**Pre-Commit Hooks**](precommit_hooks.md) - Catch issues before they reach CI
-
-??? info "Additional Resources"
-
-    ### GitHub Actions
-
-    - [GitHub Actions Documentation](https://docs.github.com/en/actions) - Complete official guide
-    - [Workflow Syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) - YAML reference
-    - [GitHub Actions Marketplace](https://github.com/marketplace?type=actions) - Pre-built actions
-    - [GitHub Actions Examples](https://github.com/actions/starter-workflows) - Template workflows
-
-    ### CI/CD Best Practices
-
-    - [CI/CD Best Practices](https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions) - GitHub's recommendations
-    - [Testing Python Applications](https://docs.pytest.org/en/7.1.x/) - pytest documentation
-    - [Code Coverage](https://coverage.readthedocs.io/) - Python coverage measurement
-
-    ### GitHub Pages
-
-    - [GitHub Pages Documentation](https://docs.github.com/en/pages) - Official GitHub Pages guide
-    - [Custom Domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) - Using your own domain
-    - [MkDocs Deployment](https://www.mkdocs.org/user-guide/deploying-your-docs/) - MkDocs-specific deployment guide
-
-    ### Security
-
-    - [Security Hardening](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) - Secure workflow practices
-    - [Encrypted Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) - Managing sensitive data
-    - [OIDC with GitHub Actions](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect) - Advanced authentication
+    This caches the pip download cache between runs, meaning dependencies install much faster after the first run.

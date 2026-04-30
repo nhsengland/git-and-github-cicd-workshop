@@ -1,33 +1,35 @@
 # Opinions and Disclaimers
 
-## Opinions
+## :material-thought-bubble: Opinions
 
-### `uv` is the tool to use for Python Environment Management
+<div class="grid cards" markdown>
 
-Other tools are available. I just think `uv` is pretty neat. It does everything I need it to do, and it does it well. As you will see in the dependency management workshop, there should be interoperability between tools.
+- :material-speedometer: **`uv` is the right tool for Python environments**
 
-### You should be creating MKDocs sites for your projects
+    Fast, clean dependency management. The `astral-sh/setup-uv` Action means your local environment and CI match exactly — no surprises.
 
-I think MKDocs is a great way to create documentation for your projects. It is easy to use, and it integrates well with GitHub Pages. You can easily adapt other NHS England Mkdocs sites to use as a template for your own. However, you need to have a public repository for GitHub Pages to work.
+- :material-layers: **Pre-commit hooks and GitHub Actions complement each other**
 
-### You should be creating utility packages for your non-business logic code
+    Hooks = fast local feedback before you push. Actions = server-side guarantee that can't be bypassed. You want both.
 
-You should be packaging your code. If your pipeline is full of specific business logic or methods, you should look into what generic utility code you can extract into a package. This workshop will help you do that.
+</div>
 
-## Disclaimers
+---
 
-### This is a Python focused workshop
+## :material-alert-circle-outline: Disclaimers
 
-Sorry R users. In NHS England Data Science team, we are a Python dominant team, so this is the language I am targeting this workshop at.If you are a R user, and you want help make a equivalent R workshop, please get in touch.
+<div class="grid cards" markdown>
 
-### This workshop was built fast using AI
+- :fontawesome-brands-python: **Python-focused**
 
-I have used AI tools to help me build this workshop quickly. Its like having a very enthusiastic Junior Dev on a lot coffee.
+    All live demos use Python. R equivalents are noted in the workshop pages, but hands-on activities are Python-first.
 
-I have worked hard to check through every line of content that the AI has created and gone through the steps of the workshop myself (as have the facilitators). But, we might have missed things and there might be inaccuracies.
+- :material-robot: **Built with AI assistance**
 
-If you run into problems or find any issues, please raise an issue on GitHub if you find any. This is an open-source workshop after all.
+    I used AI tools to help draft and structure this content. I've reviewed every section and worked through the steps myself — but things may have been missed. [Raise an issue on GitHub](https://github.com/nhsengland/git-and-github-cicd-workshop/issues/new) if you spot something.
 
-### Using this workshop in anger on real platforms and projects might not be simple
+- :material-alert: **Real projects are messier**
 
-We should be able to do this stuff on real projects and platforms. But, we know that real life is messy and it might not as simple to adopt these practices. Hopefully, you are able to take away principles and techniques from this workshop that will make it easier for you to do Gold RAP work.
+    These steps are designed to work cleanly in a Codespace. On real projects with legacy code or restricted networks, the path may be bumpier. The principles are the same.
+
+</div>

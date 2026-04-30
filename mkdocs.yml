@@ -1,9 +1,9 @@
-site_name: Package Your Code Workshop
-site_description: NHS Data Science Workshop - Package Your Code
+site_name: Git and GitHub CI/CD Workshop
+site_description: NHS Data Science Workshop - Git and GitHub CI/CD
 site_author: Joseph Wilson - NHS England - Data Science and Applied AI Team
-site_url: https://nhsengland.github.io/package-your-code-workshop
-repo_url: https://github.com/nhsengland/package-your-code-workshop
-repo_name: package-your-code-workshop
+site_url: https://nhsengland.github.io/git-and-github-cicd-workshop
+repo_url: https://github.com/nhsengland/git-and-github-cicd-workshop
+repo_name: git-and-github-cicd-workshop
 edit_uri: edit/main/docs/content/
 docs_dir: docs/content
 
@@ -35,37 +35,22 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          options:
-            docstring_style: numpy
-            members_order: source
-            show_source: true
-            show_bases: true
-            extra:
-              show_inheritance: true
 
 nav:
   - Home: index.md
   - Getting Started: getting_started.md
   - Workshop Presentation:
     - workshop_presentation/index.md
-    - Open Up The Repository: workshop_presentation/open_up_the_repository.md
     - Who am I: workshop_presentation/who_am_i.md
-    - Workshop Context - Why is any of this important?: workshop_presentation/workshop_context.md
+    - Workshop Context: workshop_presentation/workshop_context.md
     - Opinions and Disclaimers: workshop_presentation/opinions_and_disclaimers.md
+    - Open Up The Repository: workshop_presentation/open_up_the_repository.md
+    - What are Pre-Commit Hooks?: workshop_presentation/pre_commits.md
+    - What is GitHub Actions?: workshop_presentation/github_actions_intro.md
   - Workshops:
     - workshops/index.md
-    - Dependency Management: workshops/dependency_management.md
-    - Packaging with pyproject.toml: workshops/packaging_pyproject.md
-    - Documentation with MkDocs: workshops/mkdocs_documentation.md
-    - Bonus Content:
-      - Cookiecutter Templates: workshops/cookiecutter_templates.md
-      - Pre-Commit Hooks: workshops/precommit_hooks.md
-      - CI/CD with GitHub Actions: workshops/github_actions.md
-  - API Reference: 
-    - api_reference/index.md
+    - Pre-Commit Hooks: workshops/pre-commit-hooks.md
+    - GitHub Actions: workshops/github_actions.md
 
 extra_css:
   - stylesheets/nhs_style.css
@@ -73,7 +58,7 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nhsengland/package-your-code-workshop
+      link: https://github.com/nhsengland/git-and-github-cicd-workshop
     - icon: fontawesome/solid/envelope
       link: mailto:datascience@nhs.net
   generator: false
@@ -83,7 +68,10 @@ copyright: Copyright &copy; 2025 Crown Copyright (NHS England)
 markdown_extensions:
   - tables
   - attr_list
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
