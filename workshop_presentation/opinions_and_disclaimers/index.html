@@ -6,34 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="NHS Data Science Workshop - Package Your Code">
+        <meta name="description" content="NHS Data Science Workshop - Git and GitHub CI/CD">
       
       
         <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
       
       
-        <link rel="canonical" href="https://nhsengland.github.io/package-your-code-workshop/workshop_presentation/opinions_and_disclaimers/">
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshop_presentation/opinions_and_disclaimers/">
       
       
         <link rel="prev" href="../workshop_context/">
       
       
-        <link rel="next" href="../../workshops/">
+        <link rel="next" href="../open_up_the_repository/">
+      
+      
+        
       
       
       <link rel="icon" href="../../images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Opinions and Disclaimers - Package Your Code Workshop</title>
+        <title>Opinions and Disclaimers - Git and GitHub CI/CD Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -62,15 +65,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
-    
       <link rel="stylesheet" href="../../stylesheets/nhs_style.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-    
     
     
   </head>
@@ -125,9 +125,9 @@
     <!-- Link to home -->
     <a
       href="../.."
-      title="Package Your Code Workshop"
+      title="Git and GitHub CI/CD Workshop"
       class="md-header__button md-logo-nhs"
-      aria-label="Package Your Code Workshop"
+      aria-label="Git and GitHub CI/CD Workshop"
       data-md-component="logo"
     >
       
@@ -140,7 +140,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Package Your Code Workshop
+            Git and GitHub CI/CD Workshop
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -208,13 +208,13 @@
     <!-- Repository information -->
     
       <div class="md-header__source">
-        <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
       </div>
@@ -313,28 +313,6 @@
   
 
       
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../api_reference/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  API Reference
-
-        </a>
-      </li>
-    
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -365,22 +343,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Package Your Code Workshop" class="md-nav__button md-logo" aria-label="Package Your Code Workshop" data-md-component="logo">
+    <a href="../.." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
       
   <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
-    Package Your Code Workshop
+    Git and GitHub CI/CD Workshop
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
     </div>
@@ -399,9 +377,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -421,9 +404,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting Started
+  
+
     
   </span>
+  
   
 
       </a>
@@ -444,6 +432,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -477,9 +469,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshop Presentation
+  
+
     
   </span>
+  
   
 
             </a>
@@ -494,33 +491,14 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Workshop Presentation
+            
+  
+    Workshop Presentation
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../open_up_the_repository/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Open Up The Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -535,9 +513,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Who am I
+  
+
     
   </span>
+  
   
 
       </a>
@@ -558,9 +541,14 @@
   
   
   <span class="md-ellipsis">
-    Workshop Context - Why is any of this important?
+    
+  
+    Workshop Context
+  
+
     
   </span>
+  
   
 
       </a>
@@ -590,9 +578,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Opinions and Disclaimers
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -603,9 +596,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Opinions and Disclaimers
+  
+
     
   </span>
+  
   
 
       </a>
@@ -628,84 +626,22 @@
         <li class="md-nav__item">
   <a href="#opinions" class="md-nav__link">
     <span class="md-ellipsis">
-      Opinions
+      
+        Opinions
+      
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Opinions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uv-is-the-tool-to-use-for-python-environment-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      uv is the tool to use for Python Environment Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#you-should-be-creating-mkdocs-sites-for-your-projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      You should be creating MKDocs sites for your projects
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#you-should-be-creating-utility-packages-for-your-non-business-logic-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      You should be creating utility packages for your non-business logic code
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#disclaimers" class="md-nav__link">
     <span class="md-ellipsis">
-      Disclaimers
+      
+        Disclaimers
+      
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Disclaimers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#this-is-a-python-focused-workshop" class="md-nav__link">
-    <span class="md-ellipsis">
-      This is a Python focused workshop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#this-workshop-was-built-fast-using-ai" class="md-nav__link">
-    <span class="md-ellipsis">
-      This workshop was built fast using AI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-this-workshop-in-anger-on-real-platforms-and-projects-might-not-be-simple" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using this workshop in anger on real platforms and projects might not be simple
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -713,6 +649,90 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_up_the_repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Up The Repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre_commits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What are Pre-Commit Hooks?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github_actions_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is GitHub Actions?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -736,10 +756,6 @@
       
         
           
-        
-      
-        
-      
         
       
         
@@ -766,9 +782,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshops
+  
+
     
   </span>
+  
   
 
             </a>
@@ -783,7 +804,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Workshops
+            
+  
+    Workshops
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -796,155 +821,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workshops/dependency_management/" class="md-nav__link">
+      <a href="../../workshops/pre-commit-hooks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Dependency Management
     
-  </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/packaging_pyproject/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Packaging with pyproject.toml
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/mkdocs_documentation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Documentation with MkDocs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Bonus Content
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
-            <span class="md-nav__icon md-icon"></span>
-            Bonus Content
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/cookiecutter_templates/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cookiecutter Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/precommit_hooks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Pre-Commit Hooks
+  
+
     
   </span>
+  
   
 
       </a>
@@ -965,81 +854,20 @@
   
   
   <span class="md-ellipsis">
-    CI/CD with GitHub Actions
+    
+  
+    GitHub Actions
+  
+
     
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../api_reference/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    API Reference
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            API Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
           </ul>
@@ -1059,6 +887,55 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Workshop Presentation
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
               <article class="md-content__inner md-typeset">
                 
 
@@ -1075,22 +952,37 @@
 
 
 <h1 id="opinions-and-disclaimers">Opinions and Disclaimers</h1>
-<h2 id="opinions">Opinions</h2>
-<h3 id="uv-is-the-tool-to-use-for-python-environment-management"><code>uv</code> is the tool to use for Python Environment Management</h3>
-<p>Other tools are available. I just think <code>uv</code> is pretty neat. It does everything I need it to do, and it does it well. As you will see in the dependency management workshop, there should be interoperability between tools.</p>
-<h3 id="you-should-be-creating-mkdocs-sites-for-your-projects">You should be creating MKDocs sites for your projects</h3>
-<p>I think MKDocs is a great way to create documentation for your projects. It is easy to use, and it integrates well with GitHub Pages. You can easily adapt other NHS England Mkdocs sites to use as a template for your own. However, you need to have a public repository for GitHub Pages to work.</p>
-<h3 id="you-should-be-creating-utility-packages-for-your-non-business-logic-code">You should be creating utility packages for your non-business logic code</h3>
-<p>You should be packaging your code. If your pipeline is full of specific business logic or methods, you should look into what generic utility code you can extract into a package. This workshop will help you do that.</p>
-<h2 id="disclaimers">Disclaimers</h2>
-<h3 id="this-is-a-python-focused-workshop">This is a Python focused workshop</h3>
-<p>Sorry R users. In NHS England Data Science team, we are a Python dominant team, so this is the language I am targeting this workshop at.If you are a R user, and you want help make a equivalent R workshop, please get in touch.</p>
-<h3 id="this-workshop-was-built-fast-using-ai">This workshop was built fast using AI</h3>
-<p>I have used AI tools to help me build this workshop quickly. Its like having a very enthusiastic Junior Dev on a lot coffee.</p>
-<p>I have worked hard to check through every line of content that the AI has created and gone through the steps of the workshop myself (as have the facilitators). But, we might have missed things and there might be inaccuracies.</p>
-<p>If you run into problems or find any issues, please raise an issue on GitHub if you find any. This is an open-source workshop after all.</p>
-<h3 id="using-this-workshop-in-anger-on-real-platforms-and-projects-might-not-be-simple">Using this workshop in anger on real platforms and projects might not be simple</h3>
-<p>We should be able to do this stuff on real projects and platforms. But, we know that real life is messy and it might not as simple to adopt these practices. Hopefully, you are able to take away principles and techniques from this workshop that will make it easier for you to do Gold RAP work.</p>
+<h2 id="opinions"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.5 19A1.5 1.5 0 0 1 5 20.5 1.5 1.5 0 0 1 3.5 22 1.5 1.5 0 0 1 2 20.5 1.5 1.5 0 0 1 3.5 19m5-3a2.5 2.5 0 0 1 2.5 2.5A2.5 2.5 0 0 1 8.5 21 2.5 2.5 0 0 1 6 18.5 2.5 2.5 0 0 1 8.5 16m6-1c-1.19 0-2.27-.5-3-1.35-.73.85-1.81 1.35-3 1.35-1.96 0-3.59-1.41-3.93-3.26A4.02 4.02 0 0 1 2 8a4 4 0 0 1 4-4c.26 0 .5.03.77.07C7.5 3.41 8.45 3 9.5 3c1.19 0 2.27.5 3 1.35.73-.85 1.81-1.35 3-1.35 1.96 0 3.59 1.41 3.93 3.26A4.02 4.02 0 0 1 22 10a4 4 0 0 1-4 4l-.77-.07c-.73.66-1.68 1.07-2.73 1.07"/></svg></span> Opinions</h2>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a3 3 0 0 1-3-3c0-1.12.61-2.1 1.5-2.61l9.71-5.62-5.53 9.58c-.5.98-1.51 1.65-2.68 1.65m0-13c1.81 0 3.5.5 4.97 1.32l-2.1 1.21C14 5.19 13 5 12 5a8 8 0 0 0-8 8c0 2.21.89 4.21 2.34 5.65h.01c.39.39.39 1.02 0 1.41s-1.03.39-1.42.01A9.97 9.97 0 0 1 2 13 10 10 0 0 1 12 3m10 10c0 2.76-1.12 5.26-2.93 7.07-.39.38-1.02.38-1.41-.01a.996.996 0 0 1 0-1.41A7.95 7.95 0 0 0 20 13c0-1-.19-2-.54-2.9L20.67 8C21.5 9.5 22 11.18 22 13"/></svg></span> <strong><code>uv</code> is the right tool for Python environments</strong></p>
+<p>Fast, clean dependency management. The <code>astral-sh/setup-uv</code> Action means your local environment and CI match exactly — no surprises.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 16 7.36-5.73L21 9l-9-7-9 7 1.63 1.27M12 18.54l-7.38-5.73L3 14.07l9 7 9-7-1.63-1.27z"/></svg></span> <strong>Pre-commit hooks and GitHub Actions complement each other</strong></p>
+<p>Hooks = fast local feedback before you push. Actions = server-side guarantee that can't be bypassed. You want both.</p>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="disclaimers"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8"/></svg></span> Disclaimers</h2>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg></span> <strong>Python-focused</strong></p>
+<p>All live demos use Python. R equivalents are noted in the workshop pages, but hands-on activities are Python-first.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg></span> <strong>Built with AI assistance</strong></p>
+<p>I used AI tools to help draft and structure this content. I've reviewed every section and worked through the steps myself — but things may have been missed. <a href="https://github.com/nhsengland/git-and-github-cicd-workshop/issues/new">Raise an issue on GitHub</a> if you spot something.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg></span> <strong>Real projects are messier</strong></p>
+<p>These steps are designed to work cleanly in a Codespace. On real projects with legacy code or restricted networks, the path may be bumpier. The principles are the same.</p>
+</li>
+</ul>
+</div>
 
 
 
@@ -1141,7 +1033,7 @@
     <a
       href="../workshop_context/"
       class="md-footer__link md-footer__link--prev"
-      aria-label="Previous: Workshop Context - Why is any of this important?"
+      aria-label="Previous: Workshop Context"
       rel="prev"
     >
       <div class="md-footer__button md-icon">
@@ -1150,21 +1042,21 @@
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Previous </span>
-          Workshop Context - Why is any of this important?
+          Workshop Context
         </div>
       </div>
     </a>
       
     <a
-      href="../../workshops/"
+      href="../open_up_the_repository/"
       class="md-footer__link md-footer__link--next"
-      aria-label="Next: Workshop Overview"
+      aria-label="Next: Open Up The Repository"
       rel="next"
     >
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Next </span>
-          Workshop Overview
+          Open Up The Repository
         </div>
       </div>
       <div class="md-footer__button md-icon">
@@ -1209,10 +1101,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../javascripts/mermaid.mjs" type="module"></script>
       

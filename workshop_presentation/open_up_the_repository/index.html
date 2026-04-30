@@ -6,34 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="NHS Data Science Workshop - Package Your Code">
+        <meta name="description" content="NHS Data Science Workshop - Git and GitHub CI/CD">
       
       
         <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
       
       
-        <link rel="canonical" href="https://nhsengland.github.io/package-your-code-workshop/workshop_presentation/open_up_the_repository/">
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshop_presentation/open_up_the_repository/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../opinions_and_disclaimers/">
       
       
-        <link rel="next" href="../who_am_i/">
+        <link rel="next" href="../pre_commits/">
+      
+      
+        
       
       
       <link rel="icon" href="../../images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Open Up The Repository - Package Your Code Workshop</title>
+        <title>Open Up The Repository - Git and GitHub CI/CD Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -62,15 +65,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
-    
       <link rel="stylesheet" href="../../stylesheets/nhs_style.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-    
     
     
   </head>
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#open-up-the-repository" class="md-skip">
+        <a href="#lets-get-set-up" class="md-skip">
           Skip to content
         </a>
       
@@ -125,9 +125,9 @@
     <!-- Link to home -->
     <a
       href="../.."
-      title="Package Your Code Workshop"
+      title="Git and GitHub CI/CD Workshop"
       class="md-header__button md-logo-nhs"
-      aria-label="Package Your Code Workshop"
+      aria-label="Git and GitHub CI/CD Workshop"
       data-md-component="logo"
     >
       
@@ -140,7 +140,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Package Your Code Workshop
+            Git and GitHub CI/CD Workshop
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -208,13 +208,13 @@
     <!-- Repository information -->
     
       <div class="md-header__source">
-        <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
       </div>
@@ -313,28 +313,6 @@
   
 
       
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../api_reference/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  API Reference
-
-        </a>
-      </li>
-    
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -365,22 +343,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Package Your Code Workshop" class="md-nav__button md-logo" aria-label="Package Your Code Workshop" data-md-component="logo">
+    <a href="../.." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
       
   <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
-    Package Your Code Workshop
+    Git and GitHub CI/CD Workshop
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
     </div>
@@ -399,9 +377,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -421,9 +404,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting Started
+  
+
     
   </span>
+  
   
 
       </a>
@@ -444,6 +432,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -477,9 +469,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshop Presentation
+  
+
     
   </span>
+  
   
 
             </a>
@@ -494,10 +491,98 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Workshop Presentation
+            
+  
+    Workshop Presentation
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../who_am_i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who am I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop_context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshop Context
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opinions_and_disclaimers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opinions and Disclaimers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -521,9 +606,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Open Up The Repository
+  
+
     
   </span>
+  
   
 
       </a>
@@ -540,14 +630,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../who_am_i/" class="md-nav__link">
+      <a href="../pre_commits/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Who am I
+    
+  
+    What are Pre-Commit Hooks?
+  
+
     
   </span>
+  
   
 
       </a>
@@ -563,37 +658,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshop_context/" class="md-nav__link">
+      <a href="../github_actions_intro/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Workshop Context - Why is any of this important?
+    
+  
+    What is GitHub Actions?
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opinions_and_disclaimers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Opinions and Disclaimers
-    
-  </span>
   
 
       </a>
@@ -620,10 +697,6 @@
       
         
           
-        
-      
-        
-      
         
       
         
@@ -650,9 +723,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshops
+  
+
     
   </span>
+  
   
 
             </a>
@@ -667,7 +745,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Workshops
+            
+  
+    Workshops
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -680,155 +762,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workshops/dependency_management/" class="md-nav__link">
+      <a href="../../workshops/pre-commit-hooks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Dependency Management
     
-  </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/packaging_pyproject/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Packaging with pyproject.toml
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/mkdocs_documentation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Documentation with MkDocs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Bonus Content
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
-            <span class="md-nav__icon md-icon"></span>
-            Bonus Content
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/cookiecutter_templates/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cookiecutter Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/precommit_hooks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Pre-Commit Hooks
+  
+
     
   </span>
+  
   
 
       </a>
@@ -849,81 +795,20 @@
   
   
   <span class="md-ellipsis">
-    CI/CD with GitHub Actions
+    
+  
+    GitHub Actions
+  
+
     
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../api_reference/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    API Reference
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            API Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
           </ul>
@@ -943,6 +828,55 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Workshop Presentation
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
               <article class="md-content__inner md-typeset">
                 
 
@@ -958,11 +892,33 @@
   
 
 
-<h1 id="open-up-the-repository">Open up the repository</h1>
-<p>First things first, you will need to open up this website on your own machine.</p>
-<p>Follow this link: <a href="https://nhsengland.github.io/package-your-code-workshop/">nhsengland.github.io/package-your-code-workshop/</a> </p>
-<p><img alt="Package Your Code Workshop QR Code" src="../../images/package_your_code_workshop.png" /></p>
-<p>Then follow the <a href="../../getting_started/">Getting Started</a> instructions to fork the repository and open it up in Codespaces.</p>
+<h1 id="lets-get-set-up">Let's Get Set Up</h1>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2h2v8h2V7zm2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> <strong>Open this website</strong></p>
+<p><a href="https://nhsengland.github.io/git-and-github-cicd-workshop/">nhsengland.github.io/git-and-github-cicd-workshop/</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v2h4v2h-2a2 2 0 0 0-2 2v4h6v-2h-4v-2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> <strong>Follow Getting Started</strong></p>
+<p><a href="../../getting_started/">Getting Started</a> — fork the repo and open it in Codespaces.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2H9v2h4v2h-2v2h2v2H9v2h4a2 2 0 0 0 2-2M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> <strong>Start the live docs site</strong></p>
+<p>Run the command below and open the forwarded port in your browser.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7v6h4v4h2V7h-2v4h-2V7zm3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2"/></svg></span> <strong>Edit and watch it update</strong></p>
+<p>Save any Markdown file — the site refreshes automatically.</p>
+</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>run<span class="w"> </span>mkdocs<span class="w"> </span>serve<span class="w"> </span>--livereload
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep this site and your Codespace open side by side throughout the workshop.</p>
+</div>
 
 
 
@@ -1011,9 +967,9 @@
   >
      
     <a
-      href="../"
+      href="../opinions_and_disclaimers/"
       class="md-footer__link md-footer__link--prev"
-      aria-label="Previous: Package Your Code Workshop &#34;Presentation&#34;"
+      aria-label="Previous: Opinions and Disclaimers"
       rel="prev"
     >
       <div class="md-footer__button md-icon">
@@ -1022,21 +978,21 @@
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Previous </span>
-          Package Your Code Workshop "Presentation"
+          Opinions and Disclaimers
         </div>
       </div>
     </a>
       
     <a
-      href="../who_am_i/"
+      href="../pre_commits/"
       class="md-footer__link md-footer__link--next"
-      aria-label="Next: Who am I"
+      aria-label="Next: What are Pre-Commit Hooks?"
       rel="next"
     >
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Next </span>
-          Who am I
+          What are Pre-Commit Hooks?
         </div>
       </div>
       <div class="md-footer__button md-icon">
@@ -1081,10 +1037,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../javascripts/mermaid.mjs" type="module"></script>
       

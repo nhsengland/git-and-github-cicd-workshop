@@ -12,31 +12,31 @@
         <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
       
       
-        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshop_presentation/">
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshop_presentation/github_actions_intro/">
       
       
-        <link rel="prev" href="../getting_started/">
+        <link rel="prev" href="../pre_commits/">
       
       
-        <link rel="next" href="who_am_i/">
+        <link rel="next" href="../../workshops/">
       
       
         
       
       
-      <link rel="icon" href="../images/favicon/favicon.ico">
+      <link rel="icon" href="../../images/favicon/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Git and GitHub CI/CD Workshop - Git and GitHub CI/CD Workshop</title>
+        <title>What is GitHub Actions? - Git and GitHub CI/CD Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -65,9 +65,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/nhs_style.css">
+      <link rel="stylesheet" href="../../stylesheets/nhs_style.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#git-and-github-cicd-workshop" class="md-skip">
+        <a href="#github-actions" class="md-skip">
           Skip to content
         </a>
       
@@ -124,14 +124,14 @@
 
     <!-- Link to home -->
     <a
-      href=".."
+      href="../.."
       title="Git and GitHub CI/CD Workshop"
       class="md-header__button md-logo-nhs"
       aria-label="Git and GitHub CI/CD Workshop"
       data-md-component="logo"
     >
       
-  <img src="../images/logo/nhs-blue-on-white.jpg" alt="logo">
+  <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
 
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git and GitHub CI/CD Workshop
+              What is GitHub Actions?
             
           </span>
         </div>
@@ -235,7 +235,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -254,7 +254,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../getting_started/" class="md-tabs__link">
+      <a href="../../getting_started/" class="md-tabs__link">
         
   
   
@@ -277,7 +277,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -299,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../workshops/" class="md-tabs__link">
+        <a href="../../workshops/" class="md-tabs__link">
           
   
   
@@ -343,9 +343,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
+    <a href="../.." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
       
-  <img src="../images/logo/nhs-blue-on-white.jpg" alt="logo">
+  <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
     Git and GitHub CI/CD Workshop
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -399,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/" class="md-nav__link">
+      <a href="../../getting_started/" class="md-nav__link">
         
   
   
@@ -464,7 +464,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -482,7 +482,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -508,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="who_am_i/" class="md-nav__link">
+      <a href="../who_am_i/" class="md-nav__link">
         
   
   
@@ -536,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workshop_context/" class="md-nav__link">
+      <a href="../workshop_context/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="opinions_and_disclaimers/" class="md-nav__link">
+      <a href="../opinions_and_disclaimers/" class="md-nav__link">
         
   
   
@@ -592,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="open_up_the_repository/" class="md-nav__link">
+      <a href="../open_up_the_repository/" class="md-nav__link">
         
   
   
@@ -620,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pre_commits/" class="md-nav__link">
+      <a href="../pre_commits/" class="md-nav__link">
         
   
   
@@ -645,10 +645,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="github_actions_intro/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is GitHub Actions?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -664,6 +691,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is GitHub Actions?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-it-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does it work?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How does it work?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-workflow-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The workflow file
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-commit-hooks-vs-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-commit hooks vs GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -708,7 +816,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../workshops/" class="md-nav__link ">
+            <a href="../../workshops/" class="md-nav__link ">
               
   
   
@@ -752,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshops/pre-commit-hooks/" class="md-nav__link">
+      <a href="../../workshops/pre-commit-hooks/" class="md-nav__link">
         
   
   
@@ -780,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshops/github_actions/" class="md-nav__link">
+      <a href="../../workshops/github_actions/" class="md-nav__link">
         
   
   
@@ -833,7 +941,7 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Home
@@ -851,7 +959,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
     Workshop Presentation
@@ -882,8 +990,83 @@
   
 
 
-<h1 id="git-and-github-cicd-workshop">Git and GitHub CI/CD Workshop</h1>
-<p>Welcome to the <strong>Git and GitHub CI/CD</strong> workshop! This workshop is a hands-on dive into the automated features of Git and GitHub, focusing on the practical CI/CD tools that Data Science teams use to keep code quality high and collaboration smooth.</p>
+<h1 id="github-actions">GitHub Actions</h1>
+<h2 id="what-is-github-actions">What is GitHub Actions?</h2>
+<p>Automation that runs <strong>in the cloud, triggered by events in your repository</strong>.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 19c0 .34.04.67.09 1H6.5c-1.5 0-2.81-.5-3.89-1.57C1.54 17.38 1 16.09 1 14.58q0-1.95 1.17-3.48C3.34 9.57 4 9.43 5.25 9.15c.42-1.53 1.25-2.77 2.5-3.72S10.42 4 12 4c1.95 0 3.6.68 4.96 2.04S19 9.05 19 11c1.15.13 2.1.63 2.86 1.5.51.57.84 1.21 1 1.92A5.9 5.9 0 0 0 19 13c-3.31 0-6 2.69-6 6m4.75.43-1.59-1.59L15 19l2.75 3 4.75-4.75-1.16-1.41z"/></svg></span> <strong>Runs on GitHub's servers</strong></p>
+<p>No local setup needed. Every contributor gets the same environment.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg></span> <strong>Triggered by events</strong></p>
+<p>Push a commit, open a pull request, merge to <code>main</code> — Actions reacts automatically.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v2h1v14a4 4 0 0 0 4 4 4 4 0 0 0 4-4V4h1V2zm4 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m2-4c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m1-5h-4V4h4z"/></svg></span> <strong>The server-side safety net</strong></p>
+<p>Pre-commit hooks can be skipped locally. GitHub Actions can't be bypassed.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.82 15.42-2.5 4.33c-.49.86-1.4 1.31-2.32 1.25h-2v2l-2.5-4.5L15 14v2h2.82l-2.22-3.85 4.33-2.5 1.8 3.12c.52.77.59 1.8.09 2.65M9.21 3.06h5c.98 0 1.83.57 2.24 1.39l1 1.74 1.73-1-2.64 4.41-5.15.09 1.73-1-1.41-2.45-2.21 3.85-4.34-2.5 1.8-3.12c.41-.83 1.26-1.41 2.25-1.41m-4.16 16.7-2.5-4.33c-.49-.85-.42-1.87.09-2.64l1-1.73-1.73-1 5.14.08 2.65 4.42-1.73-1L6.56 16H11v5H7.4a2.51 2.51 0 0 1-2.35-1.24"/></svg></span> <strong>Reusable building blocks</strong></p>
+<p>Use community-built Actions from the GitHub Marketplace — no reinventing the wheel.</p>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="how-does-it-work">How does it work?</h2>
+<div class="grid">
+<div>
+<h3 id="the-flow">The flow</h3>
+<ol>
+<li>You push code to GitHub</li>
+<li>GitHub reads your workflow files</li>
+<li>A runner (a fresh virtual machine) spins up</li>
+<li>Your steps execute in order</li>
+<li><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> All pass → green tick on your PR</li>
+<li><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> Any fail → red cross, merge is blocked</li>
+</ol>
+</div>
+<div>
+<h3 id="the-workflow-file">The workflow file</h3>
+<p>One YAML file defines everything:</p>
+<div class="highlight"><span class="filename">.github/workflows/tests.yml</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astral-sh/setup-uv@v5</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv run pytest tests/</span>
+</code></pre></div>
+<ul>
+<li>Stored in <code>.github/workflows/</code></li>
+<li><code>on:</code> controls when it triggers</li>
+<li><code>steps:</code> are the commands to run</li>
+</ul>
+</div>
+</div>
+<hr />
+<h2 id="pre-commit-hooks-vs-github-actions">Pre-commit hooks vs GitHub Actions</h2>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v10H4m16 2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2H0v2h24v-2z"/></svg></span> <strong>Pre-commit hooks</strong></p>
+<p>Fast, local, immediate feedback. Runs before you can even push.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 20q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48 1.18-1.53 3.08-1.95.63-2.3 2.5-3.72Q9.63 4 12 4q2.93 0 4.96 2.04Q19 8.07 19 11q1.73.2 2.86 1.5 1.14 1.28 1.14 3 0 1.88-1.31 3.19T18.5 20Z"/></svg></span> <strong>GitHub Actions</strong></p>
+<p>Server-side, can't be skipped, runs in a clean environment every time.</p>
+</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Use both</p>
+<p>Hooks give you speed. Actions give you the guarantee. Together they cover every angle.</p>
+</div>
 
 
 
@@ -932,9 +1115,9 @@
   >
      
     <a
-      href="../getting_started/"
+      href="../pre_commits/"
       class="md-footer__link md-footer__link--prev"
-      aria-label="Previous: Getting Started"
+      aria-label="Previous: What are Pre-Commit Hooks?"
       rel="prev"
     >
       <div class="md-footer__button md-icon">
@@ -943,21 +1126,21 @@
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Previous </span>
-          Getting Started
+          What are Pre-Commit Hooks?
         </div>
       </div>
     </a>
       
     <a
-      href="who_am_i/"
+      href="../../workshops/"
       class="md-footer__link md-footer__link--next"
-      aria-label="Next: Who am I"
+      aria-label="Next: Workshops"
       rel="next"
     >
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Next </span>
-          Who am I
+          Workshops
         </div>
       </div>
       <div class="md-footer__button md-icon">
@@ -1003,12 +1186,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../javascripts/mermaid.mjs" type="module"></script>
+        <script src="../../javascripts/mermaid.mjs" type="module"></script>
       
     
   </body>

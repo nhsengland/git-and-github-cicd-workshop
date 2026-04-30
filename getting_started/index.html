@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="NHS Data Science Workshop - Package Your Code">
+        <meta name="description" content="NHS Data Science Workshop - Git and GitHub CI/CD">
       
       
         <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
       
       
-        <link rel="canonical" href="https://nhsengland.github.io/package-your-code-workshop/getting_started/">
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/getting_started/">
       
       
         <link rel="prev" href="..">
@@ -21,19 +21,22 @@
         <link rel="next" href="../workshop_presentation/">
       
       
+        
+      
+      
       <link rel="icon" href="../images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Getting Started - Package Your Code Workshop</title>
+        <title>Getting Started - Git and GitHub CI/CD Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -62,15 +65,12 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
-    
       <link rel="stylesheet" href="../stylesheets/nhs_style.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-    
     
     
   </head>
@@ -125,9 +125,9 @@
     <!-- Link to home -->
     <a
       href=".."
-      title="Package Your Code Workshop"
+      title="Git and GitHub CI/CD Workshop"
       class="md-header__button md-logo-nhs"
-      aria-label="Package Your Code Workshop"
+      aria-label="Git and GitHub CI/CD Workshop"
       data-md-component="logo"
     >
       
@@ -140,7 +140,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Package Your Code Workshop
+            Git and GitHub CI/CD Workshop
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -208,13 +208,13 @@
     <!-- Repository information -->
     
       <div class="md-header__source">
-        <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
       </div>
@@ -313,28 +313,6 @@
   
 
       
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../api_reference/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  API Reference
-
-        </a>
-      </li>
-    
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -365,22 +343,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Package Your Code Workshop" class="md-nav__button md-logo" aria-label="Package Your Code Workshop" data-md-component="logo">
+    <a href=".." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
       
   <img src="../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
-    Package Your Code Workshop
+    Git and GitHub CI/CD Workshop
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
     </div>
@@ -399,9 +377,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -430,9 +413,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting Started
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -443,9 +431,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting Started
+  
+
     
   </span>
+  
   
 
       </a>
@@ -466,36 +459,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#fork-the-repository" class="md-nav__link">
+  <a href="#step-1-fork-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Fork the Repository
+      
+        Step 1: Fork the Repository
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#open-in-github-codespaces" class="md-nav__link">
+  <a href="#step-2-open-in-github-codespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Open in GitHub Codespaces
+      
+        Step 2: Open in GitHub Codespaces
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fire-up-the-mkdocs-server" class="md-nav__link">
+  <a href="#step-3-verify-the-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      Fire Up the MkDocs Server
+      
+        Step 3: Verify the Environment
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#find-your-first-workshop" class="md-nav__link">
+  <a href="#step-4-serve-the-workshop-site" class="md-nav__link">
     <span class="md-ellipsis">
-      Find your first workshop
+      
+        Step 4: Serve the Workshop Site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#youre-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You're Ready
+      
     </span>
   </a>
   
@@ -530,6 +542,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -550,9 +566,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshop Presentation
+  
+
     
   </span>
+  
   
 
             </a>
@@ -567,33 +588,14 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Workshop Presentation
+            
+  
+    Workshop Presentation
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../workshop_presentation/open_up_the_repository/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Open Up The Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -608,9 +610,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Who am I
+  
+
     
   </span>
+  
   
 
       </a>
@@ -631,9 +638,14 @@
   
   
   <span class="md-ellipsis">
-    Workshop Context - Why is any of this important?
+    
+  
+    Workshop Context
+  
+
     
   </span>
+  
   
 
       </a>
@@ -654,9 +666,98 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Opinions and Disclaimers
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop_presentation/open_up_the_repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Up The Repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop_presentation/pre_commits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What are Pre-Commit Hooks?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop_presentation/github_actions_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is GitHub Actions?
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -683,10 +784,6 @@
       
         
           
-        
-      
-        
-      
         
       
         
@@ -713,9 +810,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshops
+  
+
     
   </span>
+  
   
 
             </a>
@@ -730,7 +832,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Workshops
+            
+  
+    Workshops
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -743,155 +849,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../workshops/dependency_management/" class="md-nav__link">
+      <a href="../workshops/pre-commit-hooks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Dependency Management
     
-  </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../workshops/packaging_pyproject/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Packaging with pyproject.toml
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../workshops/mkdocs_documentation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Documentation with MkDocs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Bonus Content
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
-            <span class="md-nav__icon md-icon"></span>
-            Bonus Content
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../workshops/cookiecutter_templates/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cookiecutter Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../workshops/precommit_hooks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Pre-Commit Hooks
+  
+
     
   </span>
+  
   
 
       </a>
@@ -912,81 +882,20 @@
   
   
   <span class="md-ellipsis">
-    CI/CD with GitHub Actions
+    
+  
+    GitHub Actions
+  
+
     
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../api_reference/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    API Reference
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            API Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
           </ul>
@@ -1006,6 +915,15 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
               <article class="md-content__inner md-typeset">
                 
 
@@ -1022,32 +940,71 @@
 
 
 <h1 id="getting-started">Getting Started</h1>
-<p>This guide will help you set up your development environment to participate in the <strong>Package Your Code</strong> workshop. Follow the steps below to ensure you can dive into the workshop content smoothly.</p>
-<h2 id="fork-the-repository">Fork the Repository</h2>
+<p>Before starting the workshop activities, you need to get your environment set up. This should take about 10 minutes.</p>
+<div class="admonition success">
+<p class="admonition-title">By the end of this page you will have</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Forked this repository to your own GitHub account</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Opened it in GitHub Codespaces (or cloned it locally)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Verified that <code>uv</code> and the project dependencies are installed</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Confirmed the MkDocs site serves correctly</li>
+</ul>
+</div>
+<hr />
+<h2 id="step-1-fork-the-repository">Step 1: Fork the Repository</h2>
 <ol>
-<li>Navigate to the <a href="https://github.com/nhsengland/package-your-code-workshop">Package Your Code Workshop GitHub repository</a></li>
-<li>Click the "Fork" button in the top-right corner to create a copy of the repository under your GitHub account.</li>
-<li>Click "Create fork" to confirm.</li>
-</ol>
-<h2 id="open-in-github-codespaces">Open in GitHub Codespaces</h2>
-<ol>
-<li>In your forked repository, click the green "Code" button.</li>
-<li>Select the "Codespaces" tab.</li>
-<li>Click "Create codespace on main" to launch a new Codespace instance. This may take a few moments to set up.</li>
-<li>Once the Codespace is ready, you will be taken to a VS Code environment in your browser. The repository will be cloned, and the development environment will be configured automatically, give it a few moments to finish setting up.</li>
-</ol>
-<h2 id="fire-up-the-mkdocs-server">Fire Up the MkDocs Server</h2>
-<ol>
-<li>Open a new terminal in the Codespace (Terminal &gt; New Terminal).</li>
-<li>Run the following command to start the MkDocs development server: <code>mkdocs serve</code></li>
-<li>Once the server is running, you will see a message indicating that the site is being served at a URL. Click on the URL to open the documentation in a new browser tab. This will update automatically as you make changes to the documentation files (which will happen in the MKDocs section of the workshop).</li>
+<li>Navigate to the <a href="https://github.com/nhsengland/git-and-github-cicd-workshop">Git and GitHub CI/CD Workshop repository</a>.</li>
+<li>Click the <strong>Fork</strong> button in the top-right corner.</li>
+<li>Click <strong>Create fork</strong> to confirm.</li>
 </ol>
 <div class="admonition info">
-<p class="admonition-title">Stop the server</p>
-<p>To stop the MkDocs server, return to the terminal where it's running and press <code>Ctrl + C</code>.</p>
+<p class="admonition-title">Why fork?</p>
+<p>Forking creates your own copy of the repository under your GitHub account. This means you can push commits, trigger GitHub Actions, and publish GitHub Pages — all without affecting the original repository.</p>
 </div>
-<h2 id="find-your-first-workshop">Find your first workshop</h2>
-<p>Head over to the <a href="../workshops/">workshops section</a> of the website to get started with the workshop content.</p>
+<hr />
+<h2 id="step-2-open-in-github-codespaces">Step 2: Open in GitHub Codespaces</h2>
+<ol>
+<li>In your forked repository, click the green <strong>Code</strong> button.</li>
+<li>Select the <strong>Codespaces</strong> tab.</li>
+<li>Click <strong>Create codespace on main</strong>.</li>
+</ol>
+<p>The Codespace will take a minute or two to start. It automatically runs <code>uv sync --all-groups</code> to install all project dependencies, including the <code>dev</code> and <code>docs</code> groups.</p>
+<div class="admonition tip">
+<p class="admonition-title">Working locally instead?</p>
+<p>If you prefer to work on your own machine rather than <a href="https://docs.github.com/en/codespaces">Codespaces</a>, clone your fork and run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install uv if you do not already have it</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install all project dependencies</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>uv<span class="w"> </span>sync<span class="w"> </span>--all-groups
+</code></pre></div>
+<p>See the <a href="https://docs.astral.sh/uv/">uv documentation</a> for alternative installation methods.</p>
+</div>
+<hr />
+<h2 id="step-3-verify-the-environment">Step 3: Verify the Environment</h2>
+<p>Once the Codespace is ready, open a terminal (<strong>Terminal → New Terminal</strong>) and check everything is installed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>--version
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>--version
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>--version
+</code></pre></div>
+<p>You should see version numbers printed for each. If any command fails, run <code>uv sync --all-groups</code> to reinstall.</p>
+<hr />
+<h2 id="step-4-serve-the-workshop-site">Step 4: Serve the Workshop Site</h2>
+<p>Start a live preview of this documentation site:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uv<span class="w"> </span>run<span class="w"> </span>mkdocs<span class="w"> </span>serve<span class="w"> </span>--livereload
+</code></pre></div>
+<p>Once running, a notification will appear in VS Code / Codespaces offering to open the forwarded port. Click it to open the site in your browser.</p>
+<div class="admonition tip">
+<p class="admonition-title">Live reload</p>
+<p>The server watches your <code>docs/</code> folder for changes. Every time you save a Markdown file, the browser tab refreshes automatically — no manual reload needed. Try it: edit a line in any <code>.md</code> file, save, and watch the browser update within a second or two.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Stopping the server</p>
+<p>Press <code>Ctrl + C</code> in the terminal to stop the MkDocs server.</p>
+</div>
+<hr />
+<h2 id="youre-ready">You're Ready</h2>
+<p>Head to the <a href="../workshops/">workshops section</a> and pick your activity.</p>
 
 
 
@@ -1115,13 +1072,13 @@
     <a
       href="../workshop_presentation/"
       class="md-footer__link md-footer__link--next"
-      aria-label="Next: Package Your Code Workshop &#34;Presentation&#34;"
+      aria-label="Next: Git and GitHub CI/CD Workshop"
       rel="next"
     >
       <div class="md-footer__title">
         <div class="md-ellipsis">
           <span class="md-footer__direction"> Next </span>
-          Package Your Code Workshop "Presentation"
+          Git and GitHub CI/CD Workshop
         </div>
       </div>
       <div class="md-footer__button md-icon">
@@ -1166,10 +1123,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../javascripts/mermaid.mjs" type="module"></script>
       

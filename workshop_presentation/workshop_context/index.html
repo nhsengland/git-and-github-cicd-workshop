@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="NHS Data Science Workshop - Package Your Code">
+        <meta name="description" content="NHS Data Science Workshop - Git and GitHub CI/CD">
       
       
         <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
       
       
-        <link rel="canonical" href="https://nhsengland.github.io/package-your-code-workshop/workshop_presentation/workshop_context/">
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshop_presentation/workshop_context/">
       
       
         <link rel="prev" href="../who_am_i/">
@@ -21,19 +21,22 @@
         <link rel="next" href="../opinions_and_disclaimers/">
       
       
+        
+      
+      
       <link rel="icon" href="../../images/favicon/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Workshop Context - Why is any of this important? - Package Your Code Workshop</title>
+        <title>Workshop Context - Git and GitHub CI/CD Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
   
@@ -62,15 +65,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
-    
       <link rel="stylesheet" href="../../stylesheets/nhs_style.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-    
     
     
   </head>
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workshop-context-why-is-any-of-this-important" class="md-skip">
+        <a href="#why-does-any-of-this-matter" class="md-skip">
           Skip to content
         </a>
       
@@ -125,9 +125,9 @@
     <!-- Link to home -->
     <a
       href="../.."
-      title="Package Your Code Workshop"
+      title="Git and GitHub CI/CD Workshop"
       class="md-header__button md-logo-nhs"
-      aria-label="Package Your Code Workshop"
+      aria-label="Git and GitHub CI/CD Workshop"
       data-md-component="logo"
     >
       
@@ -140,13 +140,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Package Your Code Workshop
+            Git and GitHub CI/CD Workshop
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workshop Context - Why is any of this important?
+              Workshop Context
             
           </span>
         </div>
@@ -208,13 +208,13 @@
     <!-- Repository information -->
     
       <div class="md-header__source">
-        <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
       </div>
@@ -313,28 +313,6 @@
   
 
       
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../api_reference/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  API Reference
-
-        </a>
-      </li>
-    
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -365,22 +343,22 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Package Your Code Workshop" class="md-nav__button md-logo" aria-label="Package Your Code Workshop" data-md-component="logo">
+    <a href="../.." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
       
   <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
 
     </a>
-    Package Your Code Workshop
+    Git and GitHub CI/CD Workshop
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/nhsengland/package-your-code-workshop" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    package-your-code-workshop
+    git-and-github-cicd-workshop
   </div>
 </a>
     </div>
@@ -399,9 +377,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -421,9 +404,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting Started
+  
+
     
   </span>
+  
   
 
       </a>
@@ -444,6 +432,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -477,9 +469,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshop Presentation
+  
+
     
   </span>
+  
   
 
             </a>
@@ -494,33 +491,14 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Workshop Presentation
+            
+  
+    Workshop Presentation
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../open_up_the_repository/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Open Up The Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -535,9 +513,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Who am I
+  
+
     
   </span>
+  
   
 
       </a>
@@ -567,9 +550,14 @@
   
   
   <span class="md-ellipsis">
-    Workshop Context - Why is any of this important?
+    
+  
+    Workshop Context
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -580,9 +568,14 @@
   
   
   <span class="md-ellipsis">
-    Workshop Context - Why is any of this important?
+    
+  
+    Workshop Context
+  
+
     
   </span>
+  
   
 
       </a>
@@ -603,9 +596,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-want-to-make-gold-rap-easy-and-the-default" class="md-nav__link">
+  <a href="#automation-is-what-makes-quality-sustainable" class="md-nav__link">
     <span class="md-ellipsis">
-      I want to make Gold RAP easy and the default
+      
+        Automation is what makes quality sustainable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-matters-for-rap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        This matters for RAP
+      
     </span>
   </a>
   
@@ -632,9 +638,98 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Opinions and Disclaimers
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_up_the_repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Up The Repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pre_commits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What are Pre-Commit Hooks?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github_actions_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is GitHub Actions?
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -661,10 +756,6 @@
       
         
           
-        
-      
-        
-      
         
       
         
@@ -691,9 +782,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Workshops
+  
+
     
   </span>
+  
   
 
             </a>
@@ -708,7 +804,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Workshops
+            
+  
+    Workshops
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -721,155 +821,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workshops/dependency_management/" class="md-nav__link">
+      <a href="../../workshops/pre-commit-hooks/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Dependency Management
     
-  </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/packaging_pyproject/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Packaging with pyproject.toml
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/mkdocs_documentation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Documentation with MkDocs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Bonus Content
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
-            <span class="md-nav__icon md-icon"></span>
-            Bonus Content
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/cookiecutter_templates/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cookiecutter Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../workshops/precommit_hooks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Pre-Commit Hooks
+  
+
     
   </span>
+  
   
 
       </a>
@@ -890,81 +854,20 @@
   
   
   <span class="md-ellipsis">
-    CI/CD with GitHub Actions
+    
+  
+    GitHub Actions
+  
+
     
   </span>
+  
   
 
       </a>
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../api_reference/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    API Reference
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            API Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
           </ul>
@@ -984,6 +887,55 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Workshop Presentation
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
               <article class="md-content__inner md-typeset">
                 
 
@@ -999,12 +951,35 @@
   
 
 
-<h1 id="workshop-context-why-is-any-of-this-important">Workshop Context - Why is any of this important?</h1>
-<h2 id="i-want-to-make-gold-rap-easy-and-the-default">I want to make Gold RAP easy and the default</h2>
-<p>It can be a lot easier to build Gold RAP pipelines if you are doing it from the start and/or it is baked into your workflow and the project plan.</p>
-<p>I want to make sure you know how you can do this stuff easily and effectively.</p>
-<p>I want us to build tools and templates to make it easy for you to do this stuff, so it becomes the default; you can be lazy and still do Gold RAP, allowing you focus on doing great Data Science. However, we need to do the learning and the work to develop these skills and find the lazy desired paths first.</p>
-<p>I hope this workshop helps you start to do that and you can help figure out solutions to to how we make Gold RAP the easy, lazy default.</p>
+<h1 id="why-does-any-of-this-matter">Why does any of this matter?</h1>
+<h2 id="automation-is-what-makes-quality-sustainable"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg></span> Automation is what makes quality sustainable</h2>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg></span> <strong>Writing good code once is easy</strong></p>
+<p>Maintaining that standard across a whole team, over months and years, is hard.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg></span> <strong>Manual review has limits</strong></p>
+<p>It's inconsistent, time-consuming, and dependent on the reviewer having a good day.</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> <strong>Automation doesn't have bad days</strong></p>
+<p>If the tooling fixes formatting, flags secrets, and runs tests on every change — quality becomes the default.</p>
+</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">The idea in one sentence</p>
+<p><strong>Make the right thing the easy thing.</strong></p>
+</div>
+<hr />
+<h2 id="this-matters-for-rap"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m16 11.78 4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L5.46 19H22v2H2V3h2v14.54L9.5 8z"/></svg></span> This matters for RAP</h2>
+<p>Automated quality checks are a direct enabler of <a href="https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#silver-rap-implementing-best-practice">Silver RAP</a> and <a href="https://nhsdigital.github.io/rap-community-of-practice/introduction_to_RAP/levels_of_RAP/#gold-rap-analysis-as-a-product">Gold RAP</a>.</p>
+<ul>
+<li>A pipeline that passes CI on every merge is a pipeline you can trust</li>
+<li>Build the habit early — consistent quality should be the lazy default, not an extra effort</li>
+</ul>
 
 
 
@@ -1123,10 +1098,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../javascripts/mermaid.mjs" type="module"></script>
       

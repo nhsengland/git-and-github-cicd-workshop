@@ -1,0 +1,1486 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="NHS Data Science Workshop - Git and GitHub CI/CD">
+      
+      
+        <meta name="author" content="Joseph Wilson - NHS England - Data Science and Applied AI Team">
+      
+      
+        <link rel="canonical" href="https://nhsengland.github.io/git-and-github-cicd-workshop/workshops/pre-commit-hooks/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../github_actions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/favicon/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pre-Commit Hooks - Git and GitHub CI/CD Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--<type>:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2014h-2V9h2m0%209h-2v-2h2M1%2021h22L12%202z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/nhs_style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pre-commit-hooks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  NHS England Data Science custom header - based on nhsengland/datascience
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+<!-- Header -->
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="Git and GitHub CI/CD Workshop"
+      class="md-header__button md-logo-nhs"
+      aria-label="Git and GitHub CI/CD Workshop"
+      data-md-component="logo"
+    >
+      
+  <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Git and GitHub CI/CD Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pre-Commit Hooks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    git-and-github-cicd-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting_started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../workshop_presentation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Workshop Presentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Workshops
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Git and GitHub CI/CD Workshop" class="md-nav__button md-logo" aria-label="Git and GitHub CI/CD Workshop" data-md-component="logo">
+      
+  <img src="../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+    Git and GitHub CI/CD Workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nhsengland/git-and-github-cicd-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    git-and-github-cicd-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../workshop_presentation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshop Presentation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workshop Presentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/who_am_i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who am I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/workshop_context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshop Context
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/opinions_and_disclaimers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opinions and Disclaimers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/open_up_the_repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Up The Repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/pre_commits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What are Pre-Commit Hooks?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop_presentation/github_actions_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is GitHub Actions?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workshops
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Commit Hooks
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Commit Hooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-pre-commit-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What are Pre-Commit Hooks?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-pre-commit-hooks-in-data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Use Pre-Commit Hooks in Data Science?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activity-implement-the-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity: Implement the Hooks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activity: Implement the Hooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-1-explore-whats-already-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 1: Explore What's Already Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-create-the-config-file-and-add-secret-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 2: Create the Config File and Add Secret Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-add-linting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 3: Add Linting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-4-add-notebook-output-stripping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 4: Add Notebook Output Stripping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-5-install-the-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 5: Install the Hooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-6-attempt-a-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 6: Attempt a Commit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-7-fix-the-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 7: Fix the Secret
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-8-re-stage-and-commit-successfully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task 8: Re-stage and Commit Successfully
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-file-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete File Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#going-further" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Going Further
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github_actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Workshops
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+
+    
+
+                  
+
+
+  
+  
+
+
+<h1 id="pre-commit-hooks">Pre-Commit Hooks</h1>
+<div class="admonition success">
+<p class="admonition-title">Learning Objectives</p>
+<p>By the end of this activity, you will be able to:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Explain what pre-commit hooks are and why they matter in Data Science</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Configure hooks for secret detection, linting, and notebook output stripping</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Install and run the <code>pre-commit</code> framework using <code>uv</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Understand the difference between hooks that auto-fix files and hooks that block commits</li>
+</ul>
+</div>
+<hr />
+<h2 id="what-are-pre-commit-hooks">What are Pre-Commit Hooks?</h2>
+<p>A <strong>pre-commit hook</strong> is a script that runs automatically every time you run <code>git commit</code>, <em>before</em> the commit is actually created. If the hook fails, the commit is blocked.</p>
+<p>The <a href="https://pre-commit.com/"><code>pre-commit</code></a> framework manages hooks as shareable configuration. Instead of each developer writing their own scripts, you define all your hooks in a single <code>.pre-commit-config.yaml</code> file that lives in the repository. Everyone gets the same checks.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git commit -m &quot;my changes&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>┌───────────────────┐
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  pre-commit runs  │  ← hooks fire here, before the commit exists
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  your hooks       │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>└───────┬───────────┘
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   ┌────┴────┐
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   │ PASS?   │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   └────┬────┘
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   ✓ Yes → commit is created
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   ✗ No  → commit is blocked (files may be auto-fixed for you)
+</code></pre></div>
+<hr />
+<h2 id="why-use-pre-commit-hooks-in-data-science">Why Use Pre-Commit Hooks in Data Science?</h2>
+<div class="admonition info">
+<p class="admonition-title">Three problems hooks solve</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Leaked Secrets</label><label for="__tabbed_1_2">Messy Code</label><label for="__tabbed_1_3">Dirty Notebooks</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Hardcoded passwords, API keys, and database credentials accidentally committed to Git are one of the most common security incidents in software teams. Once pushed to a remote repository, a secret is effectively compromised — even if you delete it in a later commit, it remains in the Git history.</p>
+<p><strong><a href="https://github.com/gitleaks/gitleaks">gitleaks</a></strong> scans your staged files for patterns that look like credentials before they can reach Git history.</p>
+</div>
+<div class="tabbed-block">
+<p>Inconsistent formatting and style makes code harder to review and maintain. Fixing it manually is tedious and easy to forget.</p>
+<p><strong><a href="https://docs.astral.sh/ruff/">ruff</a></strong> checks and automatically fixes formatting and linting violations on every commit.</p>
+</div>
+<div class="tabbed-block">
+<p>Jupyter notebooks store cell outputs — plots, tables, printed values — inside the <code>.ipynb</code> file as JSON. Committing these outputs bloats the repository, makes diffs near-unreadable, and can accidentally publish sensitive data.</p>
+<p><strong><a href="https://github.com/kynan/nbstripout">nbstripout</a></strong> automatically strips all outputs from notebooks before they are committed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">R Equivalents</p>
+<p>The <code>pre-commit</code> framework is language-agnostic and works for R projects too.</p>
+<ul>
+<li><strong>Secrets</strong>: the same <code>gitleaks</code> hook works for any language</li>
+<li><strong>Formatting/Linting</strong>: the <a href="https://lorenzwalthert.github.io/precommit/"><code>precommit</code></a> R package provides hooks for <code>styler</code> (formatting) and <code>lintr</code> (linting). Install it with <code>usethis::use_precommit()</code>.</li>
+<li><strong>Notebooks</strong>: <code>nbstripout</code> handles R-backed Jupyter notebooks. For R Markdown and Quarto files, <code>lintr</code> hooks can check code quality.</li>
+</ul>
+</div>
+<hr />
+<h2 id="activity-implement-the-hooks">Activity: Implement the Hooks</h2>
+<h3 id="task-1-explore-whats-already-wrong">Task 1: Explore What's Already Wrong</h3>
+<p>This repository has some intentional problems baked in. Let's find them first.</p>
+<p>Run the ruff linter to see the formatting issues:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uv<span class="w"> </span>run<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>practice_level_gp_appointments/
+</code></pre></div>
+<p>You should see errors in <code>analytics.py</code>:</p>
+<ul>
+<li><strong>E401</strong> — multiple imports on one line (<code>import os, sys</code>)</li>
+<li><strong>F401</strong> — unused imports (<code>os</code> and <code>sys</code> are never used)</li>
+<li><strong>I001</strong> — imports are not sorted correctly</li>
+</ul>
+<p>Now open <code>practice_level_gp_appointments/config.py</code>. Notice the hardcoded AWS credentials near the top of the file.</p>
+<div class="admonition danger">
+<p class="admonition-title">This is exactly how credential leaks happen</p>
+<p>These keys would be committed to Git, pushed to GitHub, and could be scraped by automated bots within minutes of being public. The <code>gitleaks</code> hook is specifically designed to catch this before it ever reaches version control.</p>
+</div>
+<p>Finally, open <code>notebooks/analysis.ipynb</code>. Notice that the cells have execution counts and outputs stored inside them — exactly the kind of content that bloats repositories and makes diffs difficult to read.</p>
+<hr />
+<h3 id="task-2-create-the-config-file-and-add-secret-detection">Task 2: Create the Config File and Add Secret Detection</h3>
+<p>Create a new file called <code>.pre-commit-config.yaml</code> in the <strong>root of the repository</strong>. Start with just the <code>gitleaks</code> hook:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">repos</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/gitleaks/gitleaks</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v8.18.4</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitleaks</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">How the config file works</p>
+<p>The <code>pre-commit</code> framework reads <code>.pre-commit-config.yaml</code> to know which hooks to run. Each entry under <code>repos:</code> points to an external Git repository that provides one or more hooks.</p>
+<p>The <code>rev</code> field pins the exact version to use — <code>pre-commit</code> downloads and caches it automatically. Pinning versions means your hooks behave identically for every developer on the team, regardless of when they cloned the repository.</p>
+<p><strong>gitleaks</strong> scans staged files for patterns that match real credentials — AWS keys, tokens, passwords. It cannot auto-fix the problem; only you can remove a secret.</p>
+</div>
+<hr />
+<h3 id="task-3-add-linting">Task 3: Add Linting</h3>
+<p>Append the <code>ruff</code> entry to <code>.pre-commit-config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/astral-sh/ruff-pre-commit</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.4.0</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">--fix</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff-format</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Two hooks from one repo</p>
+<p><code>ruff-pre-commit</code> provides two separate hooks:</p>
+<ul>
+<li><code>ruff</code> — linting. The <code>--fix</code> argument tells it to auto-correct any violations it knows how to fix, then exit with an error because it modified files (prompting you to review and re-stage them).</li>
+<li><code>ruff-format</code> — code formatting, equivalent to running <code>ruff format</code>. Formats to a consistent style automatically.</li>
+</ul>
+<p>Both hooks read your project's <code>pyproject.toml</code> for configuration, so they behave the same as running <code>ruff</code> locally.</p>
+</div>
+<hr />
+<h3 id="task-4-add-notebook-output-stripping">Task 4: Add Notebook Output Stripping</h3>
+<p>Append the final entry to <code>.pre-commit-config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/kynan/nbstripout</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7.1</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbstripout</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Why strip notebook outputs?</p>
+<p>Jupyter notebooks store cell outputs — plots, tables, printed values — as JSON inside the <code>.ipynb</code> file. Committing these outputs bloats the repository, produces near-unreadable diffs, and can accidentally publish sensitive query results or data previews.</p>
+<p><strong>nbstripout</strong> strips all outputs and execution counts before the file is staged. It modifies the file in-place, so after it runs you will see the notebook as "modified" in <code>git diff</code> — which is exactly what you want.</p>
+</div>
+<hr />
+<h3 id="task-5-install-the-hooks">Task 5: Install the Hooks</h3>
+<p>Install the hooks into your local Git repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</code></pre></div>
+<p>You should see:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pre-commit installed at .git/hooks/pre-commit
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">What does this do?</p>
+<p>It writes a small script to <code>.git/hooks/pre-commit</code>. Git calls this script automatically on every <code>git commit</code>. The hook tools themselves are downloaded and cached in <code>~/.cache/pre-commit/</code> the first time they run.</p>
+<p>Note that hooks are <strong>local</strong> — they live in <code>.git/</code>, which is never committed. Every developer who clones the repository needs to run <code>pre-commit install</code> themselves. This is a good thing to document in your <code>README.md</code>.</p>
+</div>
+<hr />
+<h3 id="task-6-attempt-a-commit">Task 6: Attempt a Commit</h3>
+<p>Stage all the changes made so far and attempt a commit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add analysis notebook and config&quot;</span>
+</code></pre></div>
+<p>Watch what happens. You should see output similar to this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gitleaks................................................................Failed
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>- hook id: gitleaks
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>- exit code: 1
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>Finding:     AWS_SECRET_ACCESS_KEY = &quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot;
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  RuleID:    aws-secret-access-key
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  File:      practice_level_gp_appointments/config.py
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  Line:      19
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>ruff (run with --fix)...............................................Failed
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>- hook id: ruff
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>- exit code: 1
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>- files were modified by this hook
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>ruff-format..........................................................Passed
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>nbstripout...........................................................Passed
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">The commit was blocked — and that is the point</p>
+<p>Three hooks ran. Here is what each one did:</p>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>Result</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gitleaks</code></td>
+<td><strong>FAILED</strong></td>
+<td>Found hardcoded AWS credentials in <code>config.py</code>. Cannot auto-fix — only you can remove a secret.</td>
+</tr>
+<tr>
+<td><code>ruff</code></td>
+<td><strong>FAILED</strong> (but auto-fixed)</td>
+<td>Fixed the import issues in <code>analytics.py</code>, then exited with an error because it modified files.</td>
+</tr>
+<tr>
+<td><code>ruff-format</code></td>
+<td>Passed</td>
+<td>Formatting was already acceptable.</td>
+</tr>
+<tr>
+<td><code>nbstripout</code></td>
+<td>Passed</td>
+<td>Stripped outputs from the notebook.</td>
+</tr>
+</tbody>
+</table>
+<p>Because the commit was blocked, <strong>nothing was committed</strong>. Run <code>git diff</code> to see the fixes <code>ruff</code> made automatically to <code>analytics.py</code>.</p>
+</div>
+<hr />
+<h3 id="task-7-fix-the-secret">Task 7: Fix the Secret</h3>
+<p>Open <code>practice_level_gp_appointments/config.py</code> and remove the hardcoded credentials. Replace them with a comment explaining the correct approach:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Credentials must come from environment variables, never hardcoded.</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># Set these in your shell or a .env file (which should be in .gitignore):</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">#   export AWS_ACCESS_KEY_ID=&quot;your-key-here&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">#   export AWS_SECRET_ACCESS_KEY=&quot;your-secret-here&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="task-8-re-stage-and-commit-successfully">Task 8: Re-stage and Commit Successfully</h3>
+<p>Stage all the changes — including the files <code>ruff</code> auto-fixed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add analysis notebook and config&quot;</span>
+</code></pre></div>
+<p>This time, all hooks should pass and the commit should succeed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>gitleaks................................................................Passed
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ruff (run with --fix)...................................................Passed
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>ruff-format.............................................................Passed
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>nbstripout...............................................................Passed
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>[main abc1234] add analysis notebook and config
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Well done!</p>
+<p>You have set up three automated quality gates that will protect this repository on every future commit:</p>
+<ul>
+<li>No more accidental secret leaks</li>
+<li>Consistent code formatting, maintained automatically</li>
+<li>Clean notebook commits, always</li>
+</ul>
+<p>Note that pre-commit hooks run <em>locally</em> and handle formatting and secrets — they do not run your test suite. When you're ready, try the <strong><a href="../github_actions/">GitHub Actions</a></strong> workshop to run automated tests in CI and catch logic bugs that slip past local checks.</p>
+</div>
+<hr />
+<h2 id="complete-file-reference">Complete File Reference</h2>
+<p>If anything looks wrong in your config, compare against the complete version here.</p>
+<details class="note">
+<summary><code>.pre-commit-config.yaml</code> — complete file</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">repos</span><span class="p">:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/gitleaks/gitleaks</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v8.18.4</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitleaks</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/astral-sh/ruff-pre-commit</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.4.0</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">--fix</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff-format</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/kynan/nbstripout</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7.1</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbstripout</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="going-further">Going Further</h2>
+<details class="info">
+<summary>Running hooks manually</summary>
+<p>You can run all hooks against every file in the repository at any time — not just on staged files:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</code></pre></div>
+<p>This is useful for applying hooks to a repository that already exists, or for checking that everything passes before a code review.</p>
+</details>
+<details class="info">
+<summary>Updating hook versions</summary>
+<p>To update all hooks to their latest tagged versions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>autoupdate
+</code></pre></div>
+<p>This updates the <code>rev</code> fields in your <code>.pre-commit-config.yaml</code>. Always review the changes and test before committing.</p>
+</details>
+<details class="info">
+<summary>Skipping a hook in an emergency</summary>
+<p>If you genuinely need to bypass a hook (for example, a known false-positive), you can skip it with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>commit<span class="w"> </span>--no-verify<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;my message&quot;</span>
+</code></pre></div>
+<p>Use this sparingly. Pre-commit hooks only work as a safety net if you actually let them run.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
+<!-- Code for the next arrow from Material for MkDocs -->
+<footer class="md-footer">
+   
+  <nav
+    class="md-footer__inner md-grid"
+    aria-label="footer.title"
+    
+  >
+     
+    <a
+      href="../"
+      class="md-footer__link md-footer__link--prev"
+      aria-label="Previous: Workshops"
+      rel="prev"
+    >
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </div>
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Previous </span>
+          Workshops
+        </div>
+      </div>
+    </a>
+      
+    <a
+      href="../github_actions/"
+      class="md-footer__link md-footer__link--next"
+      aria-label="Next: GitHub Actions"
+      rel="next"
+    >
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Next </span>
+          GitHub Actions
+        </div>
+      </div>
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+      </div>
+    </a>
+    
+  </nav>
+  
+</footer>
+
+<footer class="footer">
+  <div class="footer_left">
+    <a href="mailto:datascience@nhs.net">Contact Us</a>
+    <p>Developed by <a href="https://www.england.nhs.uk/">NHS England</a> Direct Commissioning and the Data Science Profession</p>
+    <p>
+      View the Data Science team on
+      <a href="https://github.com/nhsengland/datascience"
+        >GitHub</a
+      >
+    </p>
+  </div>
+
+  <div class="legal">
+    <div class="footer_left">
+    <p>&copy; 2025 Crown Copyright (NHS England)</p>
+    <p>All content is available under the
+        <a
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          >Open Government Licence v3.0</a
+        >, except where otherwise stated.
+      </p>    
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mermaid.mjs" type="module"></script>
+      
+    
+  </body>
+</html>
