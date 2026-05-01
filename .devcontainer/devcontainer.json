@@ -21,7 +21,9 @@
     }
   },
   "postCreateCommand": "pip install uv && uv sync --all-groups",
-  "forwardPorts": [8000],
+  "forwardPorts": [
+    8000
+  ],
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
