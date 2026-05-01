@@ -60,11 +60,45 @@ git commit -m "my changes"
 
 !!! tip "R Equivalents"
 
-    The `pre-commit` framework is language-agnostic and works for R projects too.
+    The `pre-commit` framework is language-agnostic and works for R projects too, with two routes depending on how much you mind Python being involved.
 
-    - **Secrets**: the same `gitleaks` hook works for any language
-    - **Formatting/Linting**: the [`precommit`](https://lorenzwalthert.github.io/precommit/) R package provides hooks for `styler` (formatting) and `lintr` (linting). Install it with `usethis::use_precommit()`.
-    - **Notebooks**: `nbstripout` handles R-backed Jupyter notebooks. For R Markdown and Quarto files, `lintr` hooks can check code quality.
+    === "Option 1: {precommit} R package (recommended)"
+
+        The [`precommit`](https://lorenzwalthert.github.io/precommit/) R package wraps the `pre-commit` framework and provides ready-made hooks for R projects. Python is still required under the hood, but the package manages it for you via miniconda — you never have to touch it directly.
+
+        ```r
+        # One-time setup: install miniconda and the pre-commit binary
+        reticulate::install_miniconda()
+        precommit::install_precommit()
+
+        # Once per repo: writes .pre-commit-config.yaml and installs hooks
+        precommit::use_precommit()
+        ```
+
+        This gives you the full ecosystem: `gitleaks` for secrets, `style-files` (styler) for formatting, `lintr` for linting, version-pinned hooks, and a shareable `.pre-commit-config.yaml` that all contributors use.
+
+        R Markdown and Quarto files don't embed outputs the same way `.ipynb` files do, so there is no direct equivalent to `nbstripout` for them.
+
+    === "Option 2: usethis (no Python, DIY)"
+
+        If you cannot have Python on your machine at all, `usethis::use_git_hook()` writes a plain shell script directly into `.git/hooks/pre-commit`. You wire up the tools yourself.
+
+        For example, to replicate the three hooks from this workshop:
+
+        ```r
+        usethis::use_git_hook(
+          "pre-commit",
+          "#!/bin/sh
+        # Secrets: requires gitleaks binary installed (e.g. brew install gitleaks)
+        gitleaks git --staged || exit 1
+
+        # Linting and formatting: requires R and styler/lintr installed
+        Rscript -e 'styler::style_dir(); lintr::lint_dir()' || exit 1
+        "
+        )
+        ```
+
+        **Trade-offs:** no version pinning, no shared config file, no hook catalogue — each developer must have the right binaries (`gitleaks`) and R packages installed manually. This approach works but requires more maintenance.
 
 ---
 
